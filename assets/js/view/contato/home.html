@@ -6,86 +6,79 @@
             <p class="lead opacity-75">Inicie a conversa para estabelecer um bom relacionamento e negócios.</p>
         </div>
     </section>
+ 
+         <section class="py-5 my-5 contact-section">
+        <div class="container">
 
-    <section class="contact-section container">
         <div class="row">
             <div class="col-lg-7 mb-5 mb-lg-0 pr-lg-5">
                 <span class="form-subtitle">ENVIE-NOS UMA MENSAGEM</span>
-                <h2 class="form-title">Seamless Communication, Global Impact.</h2>
-                <p class="text-muted mb-4">Elementum rutrum tortor proin aliquam dapibus arcu purus consectetuer. Porttitor ipsum blandit vel tincidunt euismod fermentum bibendum.</p>
+                <h2 class="form-title">Estamos Prontos para Ajudar.</h2>
+                <p class="text-muted mb-4">Tem alguma questão, pretende solicitar uma proposta ou saber mais sobre os nossos serviços? A nossa equipa está disponível para prestar todo o apoio necessário.</p>
                 
                 <div v-if="submitted" class="alert alert-success">
                     Obrigado, {{ formData.name }}! Sua mensagem foi enviada com sucesso.
                 </div>
 
                 <form @submit.prevent="submitForm" v-else>
+                
                     <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" v-model="formData.name" placeholder="Ex: John Doe" required>
+                         <div class="col-md-6 form-group">
+                            <label>Nome Completo</label>
+                            <input type="text" class="form-control" v-model="formData.name" placeholder="Ex: Silva Doe" required>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>Company</label>
-                            <input type="text" class="form-control" v-model="formData.company" placeholder="Ex: Fincco Corp">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>Phone</label>
-                            <input type="text" class="form-control" v-model="formData.phone" placeholder="Ex: +1 (888) 4000-2424">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Email</label>
+                            <label>E-mail</label>
                             <input type="email" class="form-control" v-model="formData.email" placeholder="Ex: name@company.com" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Subject</label>
-                        <input type="text" class="form-control" v-model="formData.subject" placeholder="How can we help you?" required>
+                        <label>Assunto</label>
+                        <input type="text" class="form-control" v-model="formData.subject" placeholder="Como podemos te ajudar?" required>
                     </div>
                     <div class="form-group">
-                        <label>Message</label>
-                        <textarea class="form-control" rows="4" v-model="formData.message" placeholder="Type your message here..." required></textarea>
+                        <label>Sua mensagem (opcional)</label>
+                        <textarea class="form-control" rows="4" v-model="formData.message" placeholder="Digite sua mensagem aqui..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-send mt-2">
-                        <i class="far fa-paper-plane mr-2"></i> Send Message
+                        <i class="far fa-paper-plane mr-2"></i> Enviar mensagem
                     </button>
                 </form>
             </div>
 
             <div class="col-lg-5">
                 <div class="info-card">
-                    <span class="small opacity-75 font-weight-bold tracking-wide d-block mb-2">GET IN TOUCH</span>
-                    <h3 class="h4 font-weight-bold mb-4">Seamless Communication, Global Impact.</h3>
+                    <span class="small opacity-75 font-weight-bold tracking-wide d-block mb-2">ENTRE EM CONTATO</span>
+                    <h3 class="h4 font-weight-bold mb-4">Comunicação perfeita, impacto global.</h3>
                     
                     <div class="info-item">
                         <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                         <div>
-                            <h6 class="mb-1 font-weight-bold">Head Office</h6>
-                            <p class="small mb-0 opacity-75">Jalan Cempaka Wangi No 22<br>Jakarta - Indonesia</p>
+                            <h6 class="mb-1 font-weight-bold">Sede</h6>
+                            <p class="small mb-0 opacity-75">Luanda - Angola</p>
                         </div>
                     </div>
 
                     <div class="info-item">
                         <div class="info-icon"><i class="fas fa-envelope"></i></div>
                         <div>
-                            <h6 class="mb-1 font-weight-bold">Email Support</h6>
-                            <p class="small mb-0 opacity-75">support@yourdomain.tld<br>hello@yourdomain.tld</p>
+                            <h6 class="mb-1 font-weight-bold">Suporte por e-mail</h6>
+                            <p class="small mb-0 opacity-75">support@financewell.tld<br>geral@financewell.tld</p>
                         </div>
                     </div>
 
                     <div class="info-item">
                         <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
                         <div>
-                            <h6 class="mb-1 font-weight-bold">Let's Talk</h6>
-                            <p class="small mb-0 opacity-75">Phone: +6221.2002.2012<br>Fax: +6221.2002.2013</p>
+                            <h6 class="mb-1 font-weight-bold">Vamos conversar</h6>
+                            <p class="small mb-0 opacity-75">Tell: +244 947 421 277</p>
                         </div>
                     </div>
 
                     <hr style="border-top: 1px solid rgba(255,255,255,0.15);" class="my-4">
 
                     <div class="social-links">
-                        <span class="small font-weight-bold mr-3">Follow us :</span>
+                        <span class="small font-weight-bold mr-3">Siga-nos :</span>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -94,6 +87,7 @@
                 </div>
             </div>
         </div>
+ </div>
     </section>
 
     <section class="map-container">
