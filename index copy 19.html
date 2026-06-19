@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa Jardins - Empreendimento Imobiliário</title>
+    <!-- Bootstrap & FontAwesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            --primary-dark: #0f241d;
+            --secondary-dark: #163228;
+            --accent-gold: #c5a880;
+            --accent-gold-hover: #b3946c;
+            --text-light: #ffffff;
+            --text-muted: #a3b8b0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Cores Customizadas */
+        .bg-dark-green { background-color: var(--primary-dark); }
+        .bg-medium-green { background-color: var(--secondary-dark); }
+        .text-gold { color: var(--accent-gold); }
+        
+        /* NOVA SEÇÃO: Barra de Informações do Topo (Top Bar) */
+        .top-info-bar {
+            background-color: #0a1814;
+            border-bottom: 1px solid rgba(197, 168, 128, 0.15);
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+        .top-info-bar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .top-info-bar a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Botões */
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            font-weight: 600;
+            border: 2px solid var(--accent-gold);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            padding: 12px 25px;
+        }
+        .btn-gold:hover {
+            background-color: transparent;
+            color: var(--accent-gold);
+        }
+
+        .btn-outline-gold {
+            background-color: transparent;
+            color: var(--accent-gold);
+            font-weight: 500;
+            border: 1px solid var(--accent-gold);
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            padding: 10px 20px;
+        }
+        .btn-outline-gold:hover, .btn-outline-gold.active {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        /* Navbar ajustada para trabalhar junto com a Top Bar fixa */
+        .sticky-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+            width: 100%;
+        }
+        .navbar {
+            background-color: rgba(15, 36, 29, 0.95);
+            border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+        }
+        .nav-link {
+            color: var(--text-light) !important;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-link:hover {
+            color: var(--accent-gold) !important;
+        }
+
+        /* Hero Section com Swiper */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0;
+        }
+
+        /* Customização Swiper para cobrir o fundo */
+        .swiper-hero {
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        /* ANIMAÇÃO PROFISSIONAL: Efeito Ken Burns */
+        .swiper-hero .swiper-slide-bg {
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: scale(1);
+            transition: transform 6500ms ease-out;
+        }
+        
+        .swiper-hero .swiper-slide-active .swiper-slide-bg {
+            transform: scale(1.07);
+        }
+
+        /* Container dos botões do slider */
+        .swiper-nav-container {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        /* Estilização Premium e Minimalista dos Botões do Slider */
+        .swiper-custom-btn {
+            width: 45px;
+            height: 45px;
+            border: 1px solid rgba(197, 168, 128, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            background-color: rgba(15, 36, 29, 0.6);
+            backdrop-filter: blur(4px);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .swiper-custom-btn:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            border-color: var(--accent-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(197, 168, 128, 0.3);
+        }
+
+        /* Paginação */
+        .swiper-hero .swiper-pagination-custom {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 8px;
+        }
+
+        .swiper-hero .swiper-pagination-custom .swiper-pagination-bullet {
+            width: 35px;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 0;
+            margin: 0;
+            opacity: 1;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .swiper-hero .swiper-pagination-custom .swiper-pagination-bullet-active {
+            background-color: var(--accent-gold);
+            width: 55px;
+        }
+
+        /* Linha de Progresso do Autoplay */
+        .hero-autoplay-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: rgba(197, 168, 128, 0.15);
+            z-index: 11;
+        }
+
+        .hero-autoplay-progress .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background-color: var(--accent-gold);
+            transition: width 10ms linear;
+        }
+
+        /* Diferenciais */
+        .feature-icon-box {
+            border: 1px solid rgba(197, 168, 128, 0.3);
+            border-radius: 4px;
+            padding: 20px;
+            height: 100%;
+            background-color: rgba(22, 50, 40, 0.5);
+        }
+
+        /* Bordas de Imagens */
+        .img-styled {
+            border: 1px solid var(--accent-gold);
+            border-radius: 8px;
+            padding: 6px;
+        }
+
+        /* CTA Final Section */
+        .cta-section {
+            background: linear-gradient(rgba(15, 36, 29, 0.85), rgba(15, 36, 29, 0.85)), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            padding: 80px 0;
+        }
+
+        footer {
+            border-top: 1px solid rgba(197, 168, 128, 0.2);
+        }
+
+        /* Ajustes responsivos */
+        @media (max-width: 576px) {
+            .swiper-nav-container {
+                right: 20px;
+                top: 15px;
+            }
+            .swiper-custom-btn {
+                width: 38px;
+                height: 38px;
+            }
+            .swiper-hero .swiper-pagination-custom .swiper-pagination-bullet {
+                width: 25px;
+            }
+            .swiper-hero .swiper-pagination-custom .swiper-pagination-bullet-active {
+                width: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    
+    <!-- Grupo Fixo no Topo: Inclui a Barra de Informações e o Menu -->
+    <div class="sticky-wrapper">
+        <!-- BARRA DE INFORMAÇÕES SUPERIOR (TOP BAR) -->
+        <div class="top-info-bar py-2 d-none d-md-block">
+            <div class="container d-flex justify-content-between align-items-center">
+                <div class="d-flex gap-4">
+                    <span>
+                        <i class="fa-solid fa-location-dot text-gold me-1"></i> 
+                        Jardim Europa, Aracaju - SE
+                    </span>
+                    <span>
+                        <i class="fa-solid fa-phone text-gold me-1"></i> 
+                        <a href="tel:+5579999999999">(79) 99999-9999</a>
+                    </span>
+                </div>
+                <div class="d-flex gap-3">
+                    <span class="text-gold fw-bold">Plantão de Vendas Aberto</span>
+                    <span class="text-white-50">|</span>
+                    <a href="#" @click.prevent="falarCorretora">
+                        <i class="fa-brands fa-whatsapp text-success me-1"></i> Conversar Agora
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MENU DE NAVEGAÇÃO -->
+        <nav class="navbar navbar-expand-lg py-3">
+            <div class="container">
+                <a class="navbar-brand text-white d-flex flex-column align-items-center" href="#">
+                    <span style="font-size: 0.7rem; letter-spacing: 4px; color: var(--accent-gold);">CASA</span>
+                    <span class="font-serif h4 m-0" style="letter-spacing: 2px;">JARDINS</span>
+                </a>
+                <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-center gap-3">
+                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#sobre">Sobre o Empreendimento</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#apartamentos">Apartamentos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#galeria">Galerias</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#localizacao">Localização</a></li>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-gold btn-sm" @click="abrirContato">AGENDE SUA VISITA</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Header com Swiper.js Slider -->
+    <header class="hero-section text-center d-flex align-items-center">
+        <div class="swiper swiper-hero">
+            <div class="hero-autoplay-progress">
+                <div class="progress-bar-fill"></div>
+            </div>
+
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide">
+                    <div class="swiper-slide-bg" style="background-image: linear-gradient(rgba(15, 36, 29, 0.7), rgba(15, 36, 29, 0.9)), url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80');"></div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <div class="swiper-slide-bg" style="background-image: linear-gradient(rgba(15, 36, 29, 0.7), rgba(15, 36, 29, 0.9)), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80');"></div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="swiper-slide">
+                    <div class="swiper-slide-bg" style="background-image: linear-gradient(rgba(15, 36, 29, 0.7), rgba(15, 36, 29, 0.9)), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80');"></div>
+                </div>
+            </div>
+            
+            <div class="swiper-nav-container">
+                <div class="swiper-custom-btn btn-prev-hero">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div class="swiper-custom-btn btn-next-hero">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+
+            <div class="swiper-pagination-custom"></div>
+        </div>
+
+        <div class="container py-5 position-relative" style="z-index: 2;">
+            <p class="text-uppercase tracking-widest text-gold small mb-3">Você merece o melhor em cada aspecta da sua vida!</p>
+            <h1 class="display-4 text-gold mb-4 mx-auto" style="max-width: 800px;">
+                Bem-vindo(a) ao Casa Jardins. Sua casa suspensa no Jardim Europa.
+            </h1>
+            <p class="lead text-muted mb-5 mx-auto" style="max-width: 600px;">
+                Descubra o condomínio dos seus sonhos e desfrute de uma experiência exclusiva que inspira o sentimento de lar.
+            </p>
+            <button class="btn btn-gold px-4 py-3" @click="abrirContato">
+                Tenho interesse em agendar uma visita!
+            </button>
+
+            <div class="row g-3 mt-5 pt-5 justify-content-center">
+                <div class="col-6 col-md-3" v-for="(item, index) in diferenciais" :key="index">
+                    <div class="feature-icon-box text-center">
+                        <i :class="item.icone" class="text-gold mb-2 fs-4"></i>
+                        <p class="small m-0 text-white" style="font-size: 0.8rem;">{{ item.texto }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Outras Seções -->
+    <section id="sobre" class="py-5 bg-medium-green">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-md-6">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Fachada Casa Jardins" class="img-fluid img-styled w-100 shadow">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-gold h1 mb-4">Uma imersão no ritmo suave dos quintais brasileiros.</h2>
+                    <p class="small text-muted mb-3">
+                        Bem-vindo(a) ao Casa Jardins, um projeto urbano com cara de casa, que respeita a natureza local e proporciona o aconchego necessário para toda a família.
+                    </p>
+                    <p class="small text-muted mb-3">
+                        Localizado no coração de Aracaju, tem a mobilidade como diferencial, além da convivência e comodidade, onde a urbanização ganha espaço, sem deixar de se conectar com a natureza ao redor.
+                    </p>
+                    <p class="small text-muted mb-4">
+                        Tranquilo e ao mesmo tempo movimentado, pois no Jardins tudo está perto: shoppings, supermercados, restaurantes, academias, as melhores escolas, parques, hospitais, igrejas, etc.
+                    </p>
+                    <button class="btn btn-gold btn-sm" @click="baixarFicha">Ver Ficha Técnica</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apartamentos" class="py-5 bg-dark-green">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-md-6 order-2 order-md-1">
+                    <h2 class="text-gold h1 mb-4">Seu Refúgio Particular!</h2>
+                    <p class="small text-muted mb-4">
+                        No Casa Jardins, cada apartamento foi cuidadosamente projetado para proporcionar o máximo de conforto, bem-estar e funcionalidade. Com ambientes espaçosos e acabamento de alto padrão que só a Moura Dubeux oferece, aqui você encontrará o equilíbrio perfeito entre luxo e praticidade.
+                    </p>
+                    <ul class="list-unstyled d-flex flex-column gap-3 mb-4">
+                        <li class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-vector-square text-gold"></i>
+                            <span>Apartamentos de 101 a 124 m²</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-bed text-gold"></i>
+                            <span>3 quartos e 3 suítes</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-car text-gold"></i>
+                            <span>2 Vagas de garagem por apartamento</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-key text-gold"></i>
+                            <span>Fechadura eletrônica em todas as unidades</span>
+                        </li>
+                    </ul>
+                    <button class="btn btn-gold" @click="falarCorretora">Fale com a Corretora</button>
+                </div>
+                <div class="col-md-6 order-1 order-md-2">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Apartamento Interno" class="img-fluid img-styled w-100 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="py-5 bg-medium-green text-center">
+        <div class="container py-4">
+            <h2 class="text-gold h1 mb-2">Vislumbre a Vida no Casa Jardins:</h2>
+            <p class="small text-muted mb-4">Onde cada detalhe foi pensado para oferecer uma experiência de moradia única e que proporcione bem-estar.</p>
+            
+            <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
+                <button 
+                    v-for="aba in galeriaAbas" 
+                    :key="aba.id"
+                    @click="abaAtiva = aba.id"
+                    :class="['btn', abaAtiva === aba.id ? 'btn-outline-gold active' : 'btn-outline-gold']">
+                    {{ aba.titulo }}
+                </button>
+            </div>
+
+            <div class="row g-3 justify-content-center">
+                <div class="col-md-4 col-sm-6" v-for="(img, idx) in imagensFiltradas" :key="idx">
+                    <div class="img-styled bg-dark-green p-2">
+                        <img :src="img" alt="Galeria Casa Jardins" class="img-fluid rounded" style="height: 220px; object-fit: cover; width: 100%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="localizacao" class="py-5 bg-dark-green">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-md-5">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <i class="fa-solid fa-location-dot text-gold fs-3"></i>
+                        <h2 class="text-gold h1 m-0">Localização Privilegiada</h2>
+                    </div>
+                    <p class="small text-muted mb-4">
+                        O Casa Jardins está estrategicamente localizado na área mais nobre de Aracaju, o Jardins. Literalmente abraçado pelo Parque da Sementeira e todo o encanto que a região proporciona.
+                    </p>
+                    <button class="btn btn-gold" @click="abrirMapa">Quero conhecer o local!</button>
+                </div>
+                <div class="col-md-7">
+                    <div class="img-styled">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.3195663740927!2d-37.0617937!3d-10.9388147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDU2JzE5LjciUyAzN8KwMDMnNDIuNSJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+                            width="100%" height="350" style="border:0; border-radius: 4px;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section text-center">
+        <div class="container">
+            <h2 class="display-5 text-gold mb-3">Agende uma visita e conheça o Casa Jardins.</h2>
+            <p class="text-white-50 small mb-4 mx-auto" style="max-width: 600px;">
+                Não deixe escapar essa oportunidade única de garantir o seu novo lar. Entre em contato agora e prepare-se para viver uma vida extraordinária!
+            </p>
+            <button class="btn btn-gold px-5 py-3" @click="abrirContato">
+                Quero conhecer o Casa Jardins!
+            </button>
+        </div>
+    </section>
+
+    <footer class="py-4 bg-dark-green text-center">
+        <div class="container">
+            <div class="navbar-brand text-white d-flex flex-column align-items-center mb-3">
+                <span style="font-size: 0.6rem; letter-spacing: 4px; color: var(--accent-gold);">CASA</span>
+                <span class="font-serif h5 m-0" style="letter-spacing: 2px;">JARDINS</span>
+            </div>
+            
+            <div class="d-flex justify-content-center gap-3 mb-3">
+                <a href="#" class="text-gold fs-5"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" class="text-gold fs-5"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="text-gold fs-5"><i class="fa-regular fa-building"></i></a>
+            </div>
+            
+            <p class="text-muted m-0" style="font-size: 0.7rem;">
+                Copyright © Andreza Cardoso - Todos os Direitos Reservados.
+            </p>
+        </div>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                abaAtiva: 'decorado',
+                diferenciais: [
+                    { icone: 'fa-solid fa-dumbbell', texto: 'Academia com Equipamento Premium' },
+                    { icone: 'fa-solid fa-truck-ramp-box', texto: 'Área Exclusiva para Delivery e E-commerce' },
+                    { icone: 'fa-solid fa-tree', texto: 'Paisagismo Exclusivo by Takeda Design' },
+                    { icone: 'fa-solid fa-shield-halved', texto: 'Guarita com Vidro Blindado' }
+                ],
+                galeriaAbas: [
+                    { id: 'decorado', titulo: 'DECORADO 3D' },
+                    { id: 'infraestrutura', titulo: 'INFRAESTRUTURA' },
+                    { id: 'plantas', titulo: 'PLANTAS 3D' }
+                ],
+                galeriaImagens: {
+                    decorado: [
+                        'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=500&q=80',
+                        'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=500&q=80',
+                        'https://images.unsplash.com/photo-1617806118233-18e1db207f62?auto=format&fit=crop&w=500&q=80'
+                    ],
+                    infraestrutura: [
+                        'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=500&q=80',
+                        'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=500&q=80',
+                        'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=500&q=80'
+                    ],
+                    plantas: [
+                        'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=500&q=80',
+                        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80',
+                        'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=500&q=80'
+                    ]
+                }
+            }
+        },
+        computed: {
+            imagensFiltradas() {
+                return this.galeriaImagens[this.abaAtiva];
+            }
+        },
+        mounted() {
+            const progressFill = document.querySelector('.progress-bar-fill');
+            const autoplayDelay = 6000;
+
+            new Swiper('.swiper-hero', {
+                loop: true,
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                speed: 1500, 
+                autoplay: {
+                    delay: autoplayDelay, 
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: '.btn-next-hero',
+                    prevEl: '.btn-prev-hero',
+                },
+                pagination: {
+                    el: '.swiper-pagination-custom',
+                    type: 'bullets',
+                    clickable: true
+                },
+                on: {
+                    autoplayTimeLeft(s, time, progress) {
+                        if(progressFill) {
+                            progressFill.style.width = (1 - progress) * 100 + '%';
+                        }
+                    },
+                    slideChange() {
+                        if(progressFill) progressFill.style.width = '0%';
+                    }
+                }
+            });
+        },
+        methods: {
+            abrirContato() {
+                alert('Direcionando para o formulário de contato / agendamento de visita!');
+            },
+            baixarFicha() {
+                alert('Fazendo o download da Ficha Técnica do Casa Jardins...');
+            },
+            falarCorretora() {
+                alert('Abrindo chat direto com a corretora via WhatsApp...');
+            },
+            abrirMapa() {
+                window.open('https://maps.google.com', '_blank');
+            }
+        }
+    });
+</script>
+</body>
+</html>

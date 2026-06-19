@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alliance - Consultoria & Treinamentos de Alta Performance</title>
+    <!-- Bootstrap & FontAwesome siper-pagination-custo -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            --primary-dark: #0f241d;
+            --secondary-dark: #163228;
+            --accent-gold: #c5a880;
+            --accent-gold-hover: #b3946c;
+            --text-light: #ffffff;
+            --text-muted: #a3b8b0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Cores Customizadas */
+        .bg-dark-green { background-color: var(--primary-dark); }
+        .bg-medium-green { background-color: var(--secondary-dark); }
+        .text-gold { color: var(--accent-gold); }
+        
+        /* Barra de Informações do Topo (Top Bar) */
+        .top-info-bar {
+            background-color: #0a1814;
+            border-bottom: 1px solid rgba(197, 168, 128, 0.15);
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+        .top-info-bar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .top-info-bar a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Botões */
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            font-weight: 600;
+            border: 2px solid var(--accent-gold);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            padding: 12px 25px;
+        }
+        .btn-gold:hover {
+            background-color: transparent;
+            color: var(--accent-gold);
+        }
+
+        .btn-outline-gold {
+            background-color: transparent;
+            color: var(--accent-gold);
+            font-weight: 500;
+            border: 1px solid var(--accent-gold);
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            padding: 10px 20px;
+        }
+        .btn-outline-gold:hover, .btn-outline-gold.active {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        /* Grupo Fixo Menu + Top Bar */
+        .sticky-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+            width: 100%;
+        }
+        .navbar {
+            background-color: rgba(15, 36, 29, 0.95);
+            border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+        }
+        .nav-link {
+            color: var(--text-light) !important;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-link:hover {
+            color: var(--accent-gold) !important;
+        }
+
+        /* Hero Section com Swiper */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            padding: 140px 0;
+        }
+
+        /* Slider de Fundo */
+        .swiper-hero {
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        /* Animação Ken Burns (Zoom Lento) */
+        .swiper-hero .swiper-slide-bg {
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: scale(1);
+            transition: transform 6500ms ease-out;
+        }
+        
+        .swiper-hero .swiper-slide-active .swiper-slide-bg {
+            transform: scale(1.07);
+        }
+
+        /* Botões do slider */
+        .siper-pagination-custo {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .swiper-custom-btn {
+            width: 45px;
+            height: 45px;
+            border: 1px solid rgba(197, 168, 128, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            background-color: rgba(15, 36, 29, 0.6);
+            backdrop-filter: blur(4px);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .swiper-custom-btn:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            border-color: var(--accent-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(197, 168, 128, 0.3);
+        }
+
+        /* Paginação */
+        .swiper-hero .swiper-pagination-custom {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 8px;
+        }
+
+        .swiper-hero .swiper-pagination-custom .swiper-pagination-bullet {
+            width: 35px;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 0;
+            margin: 0;
+            opacity: 1;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .swiper-hero .swiper-pagination-custom .swiper-pagination-bullet-active {
+            background-color: var(--accent-gold);
+            width: 55px;
+        }
+
+        /* Linha de Progresso */
+        .hero-autoplay-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: rgba(197, 168, 128, 0.15);
+            z-index: 11;
+        }
+
+        .hero-autoplay-progress .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background-color: var(--accent-gold);
+            transition: width 10ms linear;
+        }
+
+        /* Pilares / Diferenciais */
+        .feature-icon-box {
+            border: 1px solid rgba(197, 168, 128, 0.3);
+            border-radius: 4px;
+            padding: 24px;
+            height: 100%;
+            background-color: rgba(22, 50, 40, 0.7);
+            backdrop-filter: blur(4px);
+        }
+
+        /* Molduras de Fotos */
+        .img-styled {
+            border: 1px solid var(--accent-gold);
+            border-radius: 8px;
+            padding: 6px;
+        }
+
+        /* CTA Final */
+        .cta-section {
+            background: linear-gradient(rgba(15, 36, 29, 0.9), rgba(15, 36, 29, 0.9)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            padding: 90px 0;
+        }
+
+        footer {
+            border-top: 1px solid rgba(197, 168, 128, 0.2);
+        }
+
+        @media (max-width: 576px) {
+            .swiper-nav-container { right: 20px; top: 15px; }
+            .swiper-custom-btn { width: 38px; height: 38px; }
+            .swiper-hero .swiper-pagination-custom .swiper-pagination-bullet { width: 25px; }
+            .swiper-hero .swiper-pagination-custom .swiper-pagination-bullet-active { width: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    
+    <!-- Grupo Fixo no Topo (Top Bar + Navbar) -->
+    <div class="sticky-wrapper">
+        <!-- BARRA DE INFORMAÇÕES SUPERIOR -->
+        <div class="top-info-bar py-2 d-none d-md-block">
+            <div class="container d-flex justify-content-between align-items-center">
+                <div class="d-flex gap-4">
+                    <span>
+                        <i class="fa-solid fa-briefcase text-gold me-1"></i> 
+                        Soluções Corporativas Avançadas
+                    </span>
+                    <span>
+                        <i class="fa-solid fa-envelope text-gold me-1"></i> 
+                        <a href="mailto:contato@alliance.com.br">contato@alliance.com.br</a>
+                    </span>
+                </div>
+                <div class="d-flex gap-3">
+                    <span class="text-gold fw-bold"><i class="fa-solid fa-graduation-cap me-1"></i> Inscrições Abertas para Certificações</span>
+                    <span class="text-white-50">|</span>
+                    <a href="#" @click.prevent="falarConsultor">
+                        <i class="fa-brands fa-whatsapp text-success me-1"></i> Atendimento Direct
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MENU DE NAVEGAÇÃO -->
+        <nav class="navbar navbar-expand-lg py-3">
+            <div class="container">
+                <a class="navbar-brand text-white d-flex flex-column align-items-center" href="#">
+                    <span style="font-size: 0.6rem; letter-spacing: 5px; color: var(--accent-gold);">ALLIANCE</span>
+                    <span class="font-serif h4 m-0" style="letter-spacing: 2px;">CONSULTORIA</span>
+                </a>
+                <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav align-items-center gap-3">
+                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#consultoria">Consultoria</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#formacao">Formação Profissional</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#solucoes">Portfólio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#sobre">A Instituição</a></li>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-gold btn-sm" @click="abrirContato">FALE COM UM ESPECIALISTA</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Header com Swiper.js Slider (Cenários Corporativos) -->
+    <header class="hero-section text-center d-flex align-items-center">
+        <div class="swiper swiper-hero">
+            <div class="hero-autoplay-progress">
+                <div class="progress-bar-fill"></div>
+            </div>
+
+            <div class="swiper-wrapper">
+                <!-- Slide 1: Estratégia -->
+                <div class="swiper-slide">
+                    <div class="swiper-slide-bg" style="background-image: linear-gradient(rgba(15, 36, 29, 0.75), rgba(15, 36, 29, 0.95)), url('https://images.unsplash.com/photo-1707920551717-7098e9b62a69?auto=format&fit=crop&w=1920&q=80');"></div>
+                </div>
+                <!-- Slide 2: Liderança / Formação -->
+                <div class="swiper-slide">
+                    <div class="swiper-slide-bg" style="background-image: linear-gradient(rgba(15, 36, 29, 0.75), rgba(15, 36, 29, 0.95)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1920&q=80');"></div>
+                </div>
+                <!-- Slide 3: Tecnologia e Negócios -->
+                <div class="swiper-slide">
+                    <div class="swiper-slide-bg" style="background-image: linear-gradient(rgba(15, 36, 29, 0.75), rgba(15, 36, 29, 0.95)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=80');"></div>
+                </div>
+            </div>
+            
+            <div class="swiper-nav-container">
+                <div class="swiper-custom-btn btn-prev-hero">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div class="swiper-custom-btn btn-next-hero">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+
+            <div class="swiper-pagination-custom"></div>
+        </div>
+
+        <div class="container py-5 position-relative" style="z-index: 2;">
+            <p class="text-uppercase tracking-widest text-gold small mb-3">Governança, Estratégia e Desenvolvimento de Líderes</p>
+            <h1 class="display-4 text-gold mb-4 mx-auto" style="max-width: 900px;">
+                Transformamos o potencial do seu negócio em resultados previsíveis e escaláveis.
+            </h1>
+            <p class="lead text-muted mb-5 mx-auto" style="max-width: 650px;">
+                Consultoria de gestão sob medida e programas de desenvolvimento profissional desenhados para os desafios do mercado atual.
+            </p>
+            <button class="btn btn-gold px-4 py-3" @click="abrirContato">
+                Agendar Diagnóstico Empresarial Gratuito
+            </button>
+
+            <!-- Os 4 Pilares de Atuação -->
+            <div class="row g-3 mt-5 pt-4 justify-content-center">
+                <div class="col-6 col-md-3" v-for="(item, index) in diferenciais" :key="index">
+                    <div class="feature-icon-box text-center">
+                        <i :class="item.icone" class="text-gold mb-2 fs-4"></i>
+                        <p class="small m-0 text-white fw-medium" style="font-size: 0.8rem;">{{ item.texto }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Seção 1: Consultoria Empresarial -->
+    <section id="consultoria" class="py-5 bg-medium-green">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-md-6">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="Consultoria Estratégica" class="img-fluid img-styled w-100 shadow">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-gold h1 mb-4">Eficiência operacional e reestruturação estratégica.</h2>
+                    <p class="small text-muted mb-3">
+                        Nossa abordagem de consultoria analisa minuciosamente a saúde financeira, processos internos e o posicionamento de mercado da sua empresa para erradicar gargalos operacionais.
+                    </p>
+                    <p class="small text-muted mb-3">
+                        Atuamos lado a lado com o conselho e a diretoria executiva, implementando metodologias ágeis de gestão e planejamentos de governança corporativa que blindam a organização contra oscilações de mercado.
+                    </p>
+                    <p class="small text-muted mb-4">
+                        Seja para preparar a empresa para uma fusão, expandir a operação ou otimizar a margem de lucro líquida: entregamos relatórios claros e planos de ação práticos baseados em dados reais.
+                    </p>
+                    <button class="btn btn-gold btn-sm" @click="baixarApresentacao">Conhecer Modelos de Consultoria</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 2: Formação Profissional -->
+    <section id="formacao" class="py-5 bg-dark-green">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-md-6 order-2 order-md-1">
+                    <h2 class="text-gold h1 mb-4">Capacitação Executiva e Treinamentos in Company</h2>
+                    <p class="small text-muted mb-4">
+                        O capital humano é o ativo mais valioso de qualquer corporação. Nossos programas de formação profissional combinam teoria robusta com aplicações práticas imediatas para formar equipes autogerenciáveis e líderes de alta performance.
+                    </p>
+                    <ul class="list-unstyled d-flex flex-column gap-3 mb-4">
+                        <li class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-graduation-cap text-gold"></i>
+                            <span>Certificações Executivas e MBAs In Company</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-users-gear text-gold"></i>
+                            <span>Desenvolvimento de Lideranças e Soft Skills</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-chart-line text-gold"></i>
+                            <span>Treinamentos Comerciais Avançados e Vendas B2B</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-award text-gold"></i>
+                            <span>Metodologias Ativas com Certificação Internacional</span>
+                        </li>
+                    </ul>
+                    <button class="btn btn-gold" @click="falarConsultor">Solicitar Proposta de Treinamento</button>
+                </div>
+                <div class="col-md-6 order-1 order-md-2">
+                    <img src="https://images.unsplash.com/photo-1552581234-2612b75d8953?auto=format&fit=crop&w=800&q=80" alt="Treinamento Corporativo" class="img-fluid img-styled w-100 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 3: Trilhas de Aprendizado / Soluções (Galeria Modificada) -->
+    <section id="solucoes" class="py-5 bg-medium-green text-center">
+        <div class="container py-4">
+            <h2 class="text-gold h1 mb-2">Áreas de Especialização e Cursos</h2>
+            <p class="small text-muted mb-4">Explore nossas vertentes de atuação e encontre a trilha ideal para o momento atual de sua carreira ou empresa.</p>
+            
+            <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
+                <button 
+                    v-for="aba in galeriaAbas" 
+                    :key="aba.id"
+                    @click="abaAtiva = aba.id"
+                    :class="['btn', abaAtiva === aba.id ? 'btn-outline-gold active' : 'btn-outline-gold']">
+                    {{ aba.titulo }}
+                </button>
+            </div>
+
+            <div class="row g-3 justify-content-center">
+                <div class="col-md-4 col-sm-6" v-for="(img, idx) in imagensFiltradas" :key="idx">
+                    <div class="img-styled bg-dark-green p-2">
+                        <img :src="img" alt="Soluções Alliance" class="img-fluid rounded" style="height: 220px; object-fit: cover; width: 100%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção 4: Presença Institucional / Eventos Imersivos (Substituiu a Localização Física padrão por atuação e filiais) -->
+    <section id="sobre" class="py-5 bg-dark-green">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-md-5">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <i class="fa-solid fa-earth-americas text-gold fs-3"></i>
+                        <h2 class="text-gold h1 m-0">Atuação Nacional</h2>
+                    </div>
+                    <p class="small text-muted mb-4">
+                        Sediados no polo empresarial de Aracaju, contamos com infraestrutura moderna para treinamentos presenciais e hubs de atendimento executivo prontos para suportar projetos de consultoria híbrida ou remota em todo o país.
+                    </p>
+                    <button class="btn btn-gold" @click="abrirHub">Falar com Filial Regional</button>
+                </div>
+                <div class="col-md-7">
+                    <div class="img-styled">
+                        <!-- Mapa mantido, simulando o escritório central da consultoria -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.3195663740927!2d-37.0617937!3d-10.9388147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDU2JzE5LjciUyAzN8KwMDMnNDIuNSJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+                            width="100%" height="350" style="border:0; border-radius: 4px;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-section text-center">
+        <div class="container">
+            <h2 class="display-5 text-gold mb-3">Leve sua organização para o próximo nível operacional.</h2>
+            <p class="text-white-50 small mb-4 mx-auto" style="max-width: 600px;">
+                Entre em contato hoje mesmo, fale diretamente com um de nossos sócios-consultores e desenhe o mapa de crescimento do seu negócio.
+            </p>
+            <button class="btn btn-gold px-5 py-3" @click="abrirContato">
+                Solicitar Reunião de Alinhamento
+            </button>
+        </div>
+    </section>
+
+    <!-- Rodapé Corporativo -->
+    <footer class="py-4 bg-dark-green text-center">
+        <div class="container">
+            <div class="navbar-brand text-white d-flex flex-column align-items-center mb-3">
+                <span style="font-size: 0.6rem; letter-spacing: 5px; color: var(--accent-gold);">ALLIANCE</span>
+                <span class="font-serif h5 m-0" style="letter-spacing: 2px;">CONSULTORIA CORRELAÇÃO</span>
+            </div>
+            
+            <div class="d-flex justify-content-center gap-3 mb-3">
+                <a href="#" class="text-gold fs-5"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" class="text-gold fs-5"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" class="text-gold fs-5"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            
+            <p class="text-muted m-0" style="font-size: 0.7rem;">
+                Copyright © Alliance Consultoria & Treinamentos - Todos os Direitos Reservados.
+            </p>
+        </div>
+    </footer>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                abaAtiva: 'gestao',
+                diferenciais: [
+                    { icone: 'fa-solid fa-chart-pie', texto: 'Modelagem de Processos & KPI\'s' },
+                    { icone: 'fa-solid fa-chalkboard-user', texto: 'Mentoria Executiva Individual' },
+                    { icone: 'fa-solid fa-scale-balanced', texto: 'Compliance e Governança' },
+                    { icone: 'fa-solid fa-lightbulb', texto: 'Inovação e Engenharia de Negócios' }
+                ],
+                galeriaAbas: [
+                    { id: 'gestao', titulo: 'GESTÃO E FINANÇAS' },
+                    { id: 'lideranca', titulo: 'LIDERANÇA E RH' },
+                    { id: 'vendas', titulo: 'MARKETING & VENDAS' }
+                ],
+                galeriaImagens: {
+                    gestao: [
+                        'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=500&q=80',
+                        'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=500&q=80',
+                        'https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&w=500&q=80'
+                    ],
+                    lideranca: [
+                        'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=500&q=80',
+                        'https://images.unsplash.com/photo-1531535934027-667f687cfe5f?auto=format&fit=crop&w=500&q=80',
+                        'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=500&q=80'
+                    ],
+                    vendas: [
+                        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80',
+                        'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=500&q=80',
+                        'https://images.unsplash.com/photo-1542744094-3a31f103e35f?auto=format&fit=crop&w=500&q=80'
+                    ]
+                }
+            }
+        },
+        computed: {
+            imagensFiltradas() {
+                return this.galeriaImagens[this.abaAtiva];
+            }
+        },
+        mounted() {
+            const progressFill = document.querySelector('.progress-bar-fill');
+            const autoplayDelay = 6000;
+
+            new Swiper('.swiper-hero', {
+                loop: true,
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                speed: 1500, 
+                autoplay: {
+                    delay: autoplayDelay, 
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: '.btn-next-hero',
+                    prevEl: '.btn-prev-hero',
+                },
+                pagination: {
+                    el: '.swiper-pagination-custom',
+                    type: 'bullets',
+                    clickable: true
+                },
+                on: {
+                    autoplayTimeLeft(s, time, progress) {
+                        if(progressFill) {
+                            progressFill.style.width = (1 - progress) * 100 + '%';
+                        }
+                    },
+                    slideChange() {
+                        if(progressFill) progressFill.style.width = '0%';
+                    }
+                }
+            });
+        },
+        methods: {
+            abrirContato() {
+                alert('Abrindo formulário de agendamento de reuniões e diagnósticos corporativos.');
+            },
+            baixarApresentacao() {
+                alert('Iniciando o download do Portfólio Institucional da Alliance Consultoria...');
+            },
+            falarConsultor() {
+                alert('Redirecionando para o canal de atendimento exclusivo via WhatsApp Corporate...');
+            },
+            abrirHub() {
+                alert('Carregando a lista de escritórios regionais e contatos locais.');
+            }
+        }
+    });
+</script>
+</body>
+</html>

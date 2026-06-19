@@ -1,0 +1,152 @@
+<div>
+
+
+    <section class="hero-sobre ">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Sobre nós</h1>
+            <p class="lead">Home <i class="fa-solid fa-chevron-right mx-2 fs-6"></i> <span class="text-accent">Sobre
+                    nós</span></p>
+        </div>
+    </section>
+
+    <section class="partners-bar text-center">
+        <div class="container">
+            <div class="row align-items-center justify-content-center g-4">
+                <div class="col-6 col-md-3" v-for="(partner, index) in partners" :key="index">
+                    <span class="text-white opacity-50 fw-bold fs-4"><i class="fa-solid fa-cube me-2"></i>{{ partner
+                        }}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 my-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-6">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80"
+                                class="img-fluid img-grid-main" alt="Recruiter">
+                            <div class="experience-badge text-center shadow">
+                                <h4 class="fw-bold m-0 text-accent">2 Anos</h4>
+                                <small class="text-white-50">Experiencia</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&q=80"
+                                class="img-fluid rounded mb-3" alt="Meeting">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=400&q=80"
+                                class="img-fluid rounded" alt="Teamwork">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <span class="text-accent fw-bold text-uppercase tracking-wider">Sobre a FinanceWell</span>
+                    <h2 class="fw-bold my-3 display-6">Consultoria que Gera Resultados</h2>
+                    <p class=" ">
+                        Somos uma empresa especializada em consultoria empresarial e formação profissional, dedicada a
+                        fornecer soluções estratégicas que impulsionam o crescimento e a competitividade das
+                        organizações.
+                        <br><br>
+                        Trabalhamos em estreita colaboração com os nossos clientes para identificar desafios, otimizar
+                        processos, aperfeiçoar procedimentos e desenvolver estratégias eficazes que promovam maior
+                        eficiência operacional, produtividade e rentabilidade.
+                        <br><br>
+                        Com uma abordagem orientada para resultados, combinamos conhecimento técnico, inovação e
+                        compromisso para ajudar empresas e profissionais a alcançarem um desempenho sustentável e
+                        excelência nos seus negócios.
+                    </p>
+                    <a class="btn btn-accent mt-3" href="">Nossa Historia <i
+                            class="fa-solid fa-arrow-right ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <div class=" bg-light">
+
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-7">
+                        <span class="text-accent fw-bold text-uppercase">Nossa Visão</span>
+                        <h2 class="fw-bold my-3 text-dark">Ser referência em consultoria empresarial e financeira,
+                            promovendo crescimento e excelência.</h2>
+
+                        <div class="d-flex align-items-start my-4">
+                            <div class="bg-white p-3 rounded shadow-sm text-accent me-3"><i
+                                    class="fa-solid fa-users fs-4"></i></div>
+                            <div>
+                                <h5 class="fw-bold mb-1 text-accent">Profissionais ao Seu Serviço</h5>
+                                <small class="text-muted">Equipa experiente e preparada para apoiar o crescimento dos
+                                    nossos clientes.</small>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start my-4">
+                            <div class="bg-white p-3 rounded shadow-sm text-accent me-3"><i
+                                    class="fa-solid fa-database fs-4"></i></div>
+                            <div>
+                                <h5 class="fw-bold mb-1 text-accent">Informação que Gera Resultados</h5>
+                                <small class="text-muted">Transformamos dados em decisões estratégicas para melhorar o
+                                    desempenho empresarial.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 text-center">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=500&q=80"
+                            class="img-fluid rounded-4 shadow" alt="Executive Talent">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 my-5  bg-light">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-5">
+                        <img src="./assets/img/formacao/curso.jpg" class="img-fluid rounded-4 shadow" alt="Our Stories">
+                    </div>
+                    <div class="col-lg-7">
+                        <span class="text-accent fw-bold text-uppercase">Nossas Histórias</span>
+                        <h2 class="fw-bold my-3 text-dark">Uma História de Superação, Visão e Crescimento</h2>
+                        <p class="text-muted mb-4">A FinanceWell nasceu da convicção de que os maiores desafios podem
+                            transformar-se nas mais extraordinárias oportunidades. A nossa história é marcada pela
+                            resiliência, pela capacidade de reinvenção e pelo compromisso em promover a saúde financeira
+                            e o crescimento sustentável dos nossos clientes.</p>
+
+                        <div class="row g-3">
+                            <div class="col-sm-6" v-for="(history, index) in historyTimeline" :key="index">
+                                <div class="timeline-card" :class="{ 'active': history.active }">
+                                    <h3 class="fw-bold text-accent mb-2">{{ history.year }}</h3>
+                                    <h6 class="fw-bold text-preto">{{ history.title }}</h6>
+                                    <small :class="history.active ? 'text-white-50' : 'text-muted'">{{ history.desc
+                                        }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-section row text-center g-4 mt-5 mx-1">
+                    <div class="col-6 col-md-3" v-for="(stat, index) in stats" :key="index">
+                        <h2 class="display-5 fw-bold text-accent">{{ stat.value }}</h2>
+                        <small class="text-white-50 text-uppercase tracking-wider fw-bold">{{ stat.label }}</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <section class="cta-section text-center">
+        <div class="container">
+            <h2 class="fw-bold display-5 mb-4">Preparado para crescer com <br>estratégia?</h2>
+            <button class="btn btn-accent btn-lg px-5">Agende uma Consulta</button>
+        </div>
+    </section>
+
+</div>
