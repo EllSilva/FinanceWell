@@ -1,9 +1,9 @@
  :root {
-     --primary-dark: #0f241d;
-     --secondary-dark: #163228;
-     --Success-blue: #0063a5;
+     --primary-dark: #ffffff;
+     --secondary-dark: #f7f7f7;
+     --Success-blue: #0089e4;
      --dark: #333333;
-     --accent-gold: #c5a880;
+     --accent-gold: #ffffff;
      --accent-gold-hover: #b3946c;
      --text-light: #ffffff;
      --text-muted: #ffffff;
@@ -11,11 +11,9 @@
      --light-bg: #f8f9fa;
      --primary-green: #156034;
      --light-green: #228b4a;
-     --text-preto: #777777;
+     --text-preto: #ffffff;
  }
-
-
-
+ 
  body {
      font-family: 'Poppins', sans-serif;
      background-color: var(--primary-dark);
@@ -24,7 +22,6 @@
  }
 
 
- 
  .spaco {
    margin: 200px;
  }
@@ -90,7 +87,7 @@
  }
 
  .btn-gold {
-     background-color: var(--accent-gold);
+     background-color: var(--Success-blue);
      color: var(--primary-dark);
      font-weight: 600;
      border: 2px solid var(--accent-gold);
@@ -331,7 +328,7 @@
      border-radius: 4px;
      padding: 24px;
      height: 100%;
-     background-color: rgba(22, 50, 40, 0.9);
+     background-color: #0089e4;
      backdrop-filter: blur(6px);
      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
  }
@@ -581,11 +578,8 @@
  }
 
  section.module.parallax .index-50 {
-     color: #FFF;
-
-
-     z-index: 50;
-     text-transform: uppercase;
+     color: #FFF; 
+     z-index: 50; 
  }
 
  @media all and (max-width: 820px) {
