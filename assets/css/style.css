@@ -71,6 +71,24 @@
  }
 
  /* Botões */
+ /* Botões */
+ .btn-princ {
+     background-color: var(--accent-green);
+     color: var(--primary-dark);
+     font-weight: 600;
+     border: 2px solid var(--accent-green);
+     transition: all 0.3s ease;
+     text-transform: uppercase;
+     font-size: 0.85rem;
+     letter-spacing: 1px;
+     padding: 12px 25px;
+ }
+
+ .btn-princ:hover {
+     background-color: #228b4a;
+     color: var(--accent-gold);
+ }
+
  .btn-gold {
      background-color: var(--accent-gold);
      color: var(--primary-dark);
