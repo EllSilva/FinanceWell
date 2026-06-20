@@ -10,7 +10,7 @@ export default {
             itensPorPagina: 4,
             filtroNome: '',
             filtroCategoria: '',
-            categorias: ['Engenharia Civil', 'Arquitetura', 'Dimensionamento'],
+            categorias: ['Consultoria e Gestão', 'Contabilidade e Finanças', 'Planeamento Estratégico'],
             // Dados que preenchem os selects
             areas: [
                 'Desenvolvimento Web',
@@ -33,56 +33,56 @@ export default {
             // Simulando 10 cursos para testar a paginação
             cursos: [{
                 id: 1,
-                categoria: 'Engenharia Civil',
+                categoria: 'Consultoria e Gestão',
                 titulo: 'Medições e Orçamentos - MO',
                 preco: '49.900',
                 descricao: 'Descrição do curso...',
                 imagem: './assets/img/gallery/1.jpeg'
             }, {
                 id: 2,
-                categoria: 'Engenharia Civil',
+                categoria: 'Consultoria e Gestão',
                 titulo: 'Fiscalização de Obras - FO',
                 preco: '32.900',
                 descricao: 'Descrição do curso...',
                 imagem: './assets/img/gallery/2.jpeg'
             }, {
                 id: 3,
-                categoria: "Arquitetura",
+                categoria: "Contabilidade e Finanças",
                 titulo: 'AutoCAD 2D',
                 preco: '32.900',
                 descricao: 'Descrição do curso...',
                 imagem: './assets/img/gallery/AutoCAD-Civil-2D.png'
             }, {
                 id: 4,
-                categoria: 'Engenharia Civil',
+                categoria: 'Consultoria e Gestão',
                 titulo: 'Ganttproject',
                 preco: '33.000',
                 descricao: 'Descrição do curso...',
                 imagem: './assets/img/gallery/012.jpeg'
             }, {
                 id: 5,
-                categoria: 'Dimensionamento',
-                titulo: 'Dimensionamento de Estruturas metálicas com Softwate',
+                categoria: 'Planeamento Estratégico',
+                titulo: 'Planeamento Estratégico de Estruturas metálicas com Softwate',
                 preco: '40.000',
                 descricao: 'Descrição do curso...',
                 imagem: './assets/img/gallery/011.jpeg'
             }, {
                 id: 6,
-                categoria: "Dimensionamento",
+                categoria: "Planeamento Estratégico",
                 titulo: 'Topografia',
                 preco: '45.000',
                 descricao: 'Descrição do curso...',
                 imagem: './assets/img/gallery/8.jpeg'
             }, {
                 id: 7,
-                categoria: "Arquitetura",
+                categoria: "Contabilidade e Finanças",
                 titulo: 'Revit + Lumion',
                 preco: '29.000',
                 descricao: 'Descrição do curso...',
                 imagem: './assets/img/gallery/111.jpeg'
             }, {
                 id: 8,
-                categoria: "Dimensionamento",
+                categoria: "Planeamento Estratégico",
                 titulo: 'SIG - Produção de mapas com QGIS',
                 preco: '15.000',
                 descricao: 'Descrição do curso...',
