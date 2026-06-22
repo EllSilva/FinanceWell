@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Serviços Corporativos | UI Premium</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght=0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #f8fafc;
+            overflow-x: hidden;
+        }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        
+        /* Hero Futurista */
+        .premium-hero {
+            background: radial-gradient(circle at top right, #0f172a, #020617);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        /* Orbes de Luz de Fundo Animadas */
+        @keyframes floatGlow {
+            0%, 100% { transform: scale(1) translate(0px, 0px); opacity: 0.4; }
+            50% { transform: scale(1.2) translate(40px, -60px); opacity: 0.6; }
+        }
+        .blur-glow { 
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px); 
+            z-index: 1;
+            animation: floatGlow 10s infinite alternate ease-in-out;
+        }
+        .bg-blob-1 {
+            top: -10%; right: -5%; width: 500px; height: 500px;
+            background: linear-gradient(45deg, #3b82f6, #6366f1);
+        }
+        .bg-blob-2 {
+            bottom: -20%; left: -10%; width: 450px; height: 450px;
+            background: linear-gradient(45deg, #06b6d4, #10b981);
+            animation-delay: -3s;
+        }
+
+        /* Input de Busca Fluido */
+        .search-wrapper {
+            max-width: 650px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+        .search-box {
+            background: rgba(15, 23, 42, 0.8) !important;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: #ffffff !important;
+            padding: 1.1rem 1.5rem 1.1rem 3.5rem !important;
+            border-radius: 1.5rem !important;
+            font-weight: 300;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+        .search-box:focus {
+            border-color: #3b82f6 !important;
+            background: rgba(15, 23, 42, 0.95) !important;
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2) !important;
+        }
+        .search-icon {
+            position: absolute;
+            left: 1.5rem; top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 1.25rem;
+        }
+
+        /* Botões de Filtro Modernos */
+        .filter-container {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            padding: 0.6rem;
+            border-radius: 2rem;
+            box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.08);
+            margin-top: -2.5rem;
+            position: relative;
+            z-index: 10;
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+        .btn-filter {
+            border: none; background: transparent; color: #64748b;
+            padding: 0.8rem 1.8rem; font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 0.05em; text-transform: uppercase;
+            border-radius: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .btn-filter:hover:not(.active) {
+            background-color: #f1f5f9; color: #0f172a;
+            transform: translateY(-2px);
+        }
+        .btn-filter.active {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2);
+        }
+
+        /* Cyber Cards Premium */
+        .cyber-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 2.25rem;
+            overflow: hidden;
+            height: 100%;
+            display: flex; flex-direction: column; justify-content: space-between;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.3s ease;
+        }
+        .cyber-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 40px 70px -15px rgba(15, 23, 42, 0.08), 0 0 30px rgba(59, 130, 246, 0.03);
+            border-color: #cbd5e1;
+        }
+
+        /* Zoom das Capas */
+        .img-mask {
+            position: relative; height: 220px; overflow: hidden;
+        }
+        .img-mask img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .cyber-card:hover .img-mask img { transform: scale(1.1); }
+        .card-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.7) 0%, transparent 100%);
+        }
+
+        /* Ícone com Efeito Mola */
+        .icon-container {
+            position: absolute; bottom: -1.75rem; left: 2rem;
+            width: 3.8rem; height: 3.8rem; border-radius: 1.25rem;
+            background: #ffffff; border: 1px solid #f1f5f9;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            z-index: 5;
+            transition: transform 0.5s cubic-bezier(0.34, 1.6, 0.4, 1);
+        }
+        .cyber-card:hover .icon-container {
+            transform: translateY(-15px) scale(1.1) rotate(5deg);
+        }
+
+        /* ========================================================
+           DESIGN ULTRA ATRAENTE DO FORMULÁRIO (MODAL LUXO)
+           ======================================================== */
+        .premium-modal .modal-content {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 2.5rem;
+            color: #f8fafc;
+            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.7);
+        }
+        .premium-modal .modal-header {
+            padding: 2.5rem 2.5rem 1rem 2.5rem;
+        }
+        .premium-modal .modal-body {
+            padding: 1rem 2.5rem 2.5rem 2.5rem;
+        }
+        
+        /* Rótulos das caixas de texto */
+        .premium-modal .form-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Inputs Editáveis Premium */
+        .premium-modal .form-control {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            color: #ffffff;
+            padding: 0.85rem 1.25rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .premium-modal .form-control:focus {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: #3b82f6;
+            box-shadow: 0 0 18px rgba(59, 130, 246, 0.4);
+            color: #ffffff;
+        }
+
+        /* Inputs Bloqueados de Informação Inteligente */
+        .form-control-lock {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05)) !important;
+            border: 1px solid rgba(59, 130, 246, 0.2) !important;
+            color: #38bdf8 !important;
+            font-weight: 600;
+            border-radius: 1rem;
+            padding: 0.85rem 1.25rem;
+            cursor: not-allowed;
+        }
+
+        /* Botão Magnético de Envio */
+        .btn-gradient-submit {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border: none;
+            color: white;
+            padding: 1rem;
+            border-radius: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-gradient-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.5);
+            opacity: 0.95;
+        }
+
+        /* ANIMAÇÕES VUE (TRANSITION-GROUP FLUIDO) */
+        .list-enter { opacity: 0; transform: translateY(30px) scale(0.95); }
+        .list-leave-to { opacity: 0; transform: translateY(-30px) scale(0.9); }
+        .list-enter-active { transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .list-leave-active { transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); position: absolute; width: calc(100% - 1.5rem); }
+        .list-move { transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
+    </style>
+</head>
+<body>
+
+    <div id="app" class="pb-5">
+        
+        <header class="premium-hero text-white text-center py-5">
+            <div class="blur-glow bg-blob-1"></div>
+            <div class="blur-glow bg-blob-2"></div>
+
+            <div class="container position-relative z-3 py-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
+                        <span class="badge rounded-pill px-4 py-2.5 mb-4 text-uppercase fw-bold" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: #60a5fa;">
+                            <span class="spinner-grow spinner-grow-sm text-info me-2" style="width: 0.5rem; height: 0.5rem;"></span>
+                            Ecossistema Corporativo Conectado
+                        </span>
+                        
+                        <h1 class="display-3 font-serif fw-bold mb-4 text-white">
+                            Soluções de Elite para <br>
+                            <span class="text-transparent bg-clip-text bg-gradient" style="background-image: linear-gradient(to right, #60a5fa, #a78bfa);">Negócios Exigentes</span>
+                        </h1>
+                        
+                        <p class="lead text-secondary fw-light mb-5 px-md-5 fs-4">
+                            Potencialize a sua governança e acelere resultados com uma estrutura operacional inteligente moldada para o futuro do mercado.
+                        </p>
+                        
+                        <div class="search-wrapper">
+                            <i class="bi bi-search search-icon"></i>
+                            <input 
+                                v-model="pesquisa" 
+                                type="text" 
+                                placeholder="Descubra serviços corporativos em tempo real..." 
+                                class="form-control search-box"
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="container text-center mb-5">
+            <div class="filter-container">
+                <button 
+                    v-for="cat in categorias" 
+                    :key="cat.id"
+                    @click="categoriaSelecionada = cat.id"
+                    :class="['btn-filter', { active: categoriaSelecionada === cat.id }]"
+                >
+                    {{ cat.nome }}
+                </button>
+            </div>
+        </section>
+
+        <main class="container py-4">
+            
+            <div v-if="servicosFiltrados.length === 0" class="text-center py-5 bg-white border border-light-subtle rounded-5 shadow-sm mx-auto" style="max-width: 450px;">
+                <div class="d-inline-flex align-items-center justify-content-center bg-light text-primary rounded-4 p-4 mb-3">
+                    <i class="bi bi-search-heart h2 m-0 text-muted"></i>
+                </div>
+                <h4 class="fw-bold text-dark">Nenhum serviço encontrado</h4>
+                <p class="text-muted small px-4 fw-light">Experimente digitar outro termo ou selecione uma categoria diferente no menu acima.</p>
+            </div>
+
+            <transition-group 
+                name="list" 
+                tag="div" 
+                class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3 position-relative"
+            >
+                <div v-for="servico in servicosFiltrados" :key="servico.id" class="col">
+                    <div class="cyber-card">
+                        <div>
+                            <div class="img-mask">
+                                <img :src="'https://images.unsplash.com/photo-' + servico.imgId + '?auto=format&fit=crop&w=600&q=80'" :alt="servico.nome" loading="lazy">
+                                <div class="card-overlay"></div>
+                                <span class="badge position-absolute top-0 end-0 m-3 font-monospace text-white-50" style="background: rgba(0,0,0,0.4); font-size: 0.75rem;">
+                                    //{{ String(servico.id).padStart(2, '0') }}
+                                </span>
+                                
+                                <div class="icon-container" :class="servico.corTexto">
+                                    <i :class="'bi ' + servico.icone"></i>
+                                </div>
+                            </div>
+
+                            <div class="p-4 pt-5 px-4">
+                                <span class="badge mb-3 text-primary uppercase tracking-wider" style="font-size: 0.65rem; background-color: #eff6ff; font-weight: 800; letter-spacing: 0.1em;">
+                                    {{ encontrarNomeCategoria(servico.cat) }}
+                                </span>
+                                <h5 class="fw-bold text-dark mb-3 lh-sm" style="font-size: 1.25rem;">{{ servico.nome }}</h5>
+                                <p class="text-muted fw-light mb-0 lh-base" style="font-size: 0.875rem;">{{ servico.descricao }}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 mx-2 pt-3 border-top border-light-subtle d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="bg-success rounded-circle d-inline-block" style="width: 6px; height: 6px;"></span>
+                                <span class="text-uppercase tracking-wider text-muted fw-semibold" style="font-size: 0.65rem;">Disponível</span>
+                            </div>
+                            <button @click="abrirAgendamento(servico)" class="btn btn-link p-0 d-flex align-items-center gap-1 text-dark text-decoration-none fw-bold text-uppercase" style="font-size: 0.75rem; letter-spacing: 0.05em;">
+                                Agendar
+                                <i class="bi bi-arrow-right text-primary fs-6 ms-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </transition-group>
+        </main>
+
+        <div class="modal fade premium-modal" id="modalAgendamento" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content">
+                    
+                    <div class="modal-header border-0 d-flex justify-content-between align-items-start">
+                        <div>
+                            <span class="text-primary text-uppercase font-monospace fw-bold" style="font-size: 0.7rem; letter-spacing: 0.15em;">Solicitação Direta</span>
+                            <h3 class="modal-title fw-bold font-serif text-white mt-1" style="font-size: 1.75rem;">Agendar Briefing</h3>
+                        </div>
+                        <button type="button" class="btn-close btn-close-white opacity-75" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form @submit.prevent="submeterFormulario">
+                            
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label text-uppercase">Área Corporativa</label>
+                                    <div class="form-control form-control-lock d-flex align-items-center gap-2">
+                                        <i class="bi bi-tag-fill text-info"></i>
+                                        <span>{{ formAgendamento.categoria }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label text-uppercase">Serviço Pretendido</label>
+                                    <div class="form-control form-control-lock text-truncate d-flex align-items-center gap-2">
+                                        <i class="bi bi-layers-half text-purple"></i>
+                                        <span class="text-truncate">{{ formAgendamento.servicoNome }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="border-top border-secondary-subtle opacity-25 mb-4"></div>
+
+                            <div class="mb-3.5 position-relative">
+                                <label class="form-label text-uppercase">Seu Nome Executivo</label>
+                                <input type="text" class="form-control" required placeholder="Ex: Dr. Alexandre Soares" v-model="formAgendamento.clienteNome">
+                            </div>
+
+                            <div class="mb-3.5 mt-3">
+                                <label class="form-label text-uppercase">E-mail Corporativo</label>
+                                <input type="email" class="form-control" required placeholder="Ex: diretoria@suaempresa.com" v-model="formAgendamento.clienteEmail">
+                            </div>
+
+                            <div class="row mt-3 mb-4">
+                                <div class="col-12">
+                                    <label class="form-label text-uppercase">Data de Preferência para Reunião</label>
+                                    <input type="date" class="form-control" required v-model="formAgendamento.dataPreferencia">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-gradient-submit w-100 d-flex align-items-center justify-content-center gap-2 text-uppercase text-white">
+                                <span>Garantir Vaga na Agenda</span>
+                                <i class="bi bi-chevron-right small"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                pesquisa: '',
+                categoriaSelecionada: 'todos',
+                instanciaModal: null, 
+                categorias: [
+                    { id: 'todos', nome: 'Todos os Serviços' },
+                    { id: 'cont', nome: 'Contabilidade & Auditoria' },
+                    { id: 'gestao', nome: 'Gestão & Estratégia' },
+                    { id: 'legal', nome: 'Legal & RH' },
+                    { id: 'mkt', nome: 'Mercado & Expansão' }
+                ],
+                formAgendamento: {
+                    categoria: '',
+                    servicoNome: '',
+                    clienteNome: '',
+                    clienteEmail: '',
+                    dataPreferencia: ''
+                },
+                servicos: [
+                    { id: 1, cat: 'gestao', nome: "Consultoria Empresarial", icone: "bi-briefcase-fill", corTexto: "text-primary", imgId: "1454157471167-7f415f903966", 
+                      descricao: "Análise diagnóstica e reestruturação de processos internos para maximizar a rentabilidade e eficiência operacional." },
+                    { id: 2, cat: 'cont', nome: "Contabilidade Geral", icone: "bi-calculator-fill", corTexto: "text-indigo", imgId: "1554224155-8d04cb21cd6c", 
+                      descricao: "Classificação, registo e execução das obrigações contabilísticas diárias da sua empresa segundo as normas em vigor." },
+                    { id: 3, cat: 'cont', nome: "Contabilidade Analítica", icone: "bi-pie-chart-fill", corTexto: "text-indigo", imgId: "1460925895917-afdab827c52f", 
+                      descricao: "Apuramento detalhado de custos por produto, setor ou departamento, auxiliando na fixação estratégica de preços." },
+                    { id: 4, cat: 'cont', nome: "Contabilidade Pública", icone: "bi-bank2", corTexto: "text-indigo", imgId: "1526304640581-d334cdbbf45e", 
+                      descricao: "Gestão financeira especializada para órgãos estatais, autarquias e instituições do setor público administrativo." },
+                    { id: 5, cat: 'cont', nome: "Fecho de Conta", icone: "bi-journal-check", corTexto: "text-success", imgId: "1543286386-7a393a1f81a1", 
+                      descricao: "Apuração final do exercício anual com elaboração do Balanço, Demonstração de Resultados e Relatório de Contas." },
+                    { id: 6, cat: 'legal', nome: "Processamento Salarial", icone: "bi-wallet2", corTexto: "text-danger", imgId: "1579621970563-ebec7560ff3e", 
+                      descricao: "Emissão automatizada de recibos de vencimento, guias da Segurança Social e gestão integral de folhas de pagamento." },
+                    { id: 7, cat: 'legal', nome: "Fiscalidade", icone: "bi-percent", corTexto: "text-warning", imgId: "1586319830536-1e43697669d5", 
+                      descricao: "Apuramento rigoroso e entrega declarativa de impostos obrigatórios (IVA, IRC, IRS) mitigando riscos de coimas." },
+                    { id: 8, cat: 'legal', nome: "Planeamento Fiscal", icone: "bi-shield-shaded", corTexto: "text-warning", imgId: "1450133064473-71024230f91b", 
+                      descricao: "Estudo lícito e antecipado da estrutura corporativa para reduzir a carga tributária aproveitando benefícios fiscais." },
+                    { id: 9, cat: 'mkt', nome: "Marketing e Publicidade", icone: "bi-megaphone-fill", corTexto: "text-info", imgId: "1460925895917-afdab827c52f", 
+                      descricao: "Criação de campanhas de posicionamento de marca e captação de clientes nos canais digitais e tradicionais." },
+                    { id: 10, cat: 'legal', nome: "Recursos Humanos", icone: "bi-people-fill", corTexto: "text-danger", imgId: "1600880292203-757bb62b4baf", 
+                      descricao: "Gestão estratégica de talento, englobando admissão, avaliação de desempenho e mediação de contratos de trabalho." },
+                    { id: 11, cat: 'gestao', nome: "Organização Administrativa", icone: "bi-layers-half", corTexto: "text-primary", imgId: "1497366216548-37526070297c", 
+                      descricao: "Implementação de metodologias para triagem documental, arquivo digital e fluxos organizacionais eficientes." },
+                    { id: 12, cat: 'cont', nome: "Auditoria Financeira", icone: "bi-clipboard-check-fill", corTexto: "text-indigo", imgId: "1590283603385-17ffb3a7f29f", 
+                      descricao: "Exame pericial independente aos seus registos contabilísticos para certificar a total transparência dos seus relatórios." },
+                    { id: 13, cat: 'cont', nome: "Orçamentos", icone: "bi-graph-down", corTexto: "text-indigo", imgId: "1559526324-4b87b5e36e44", 
+                      descricao: "Previsão meticulosa de receitas e despesas futuras para blindar o fluxo de caixa contra flutuações de mercado." },
+                    { id: 14, cat: 'gestao', nome: "Consultoria e Auditoria de obras", icone: "bi-building-fill", corTexto: "text-primary", imgId: "1541888946425-d81bb19240f5", 
+                      descricao: "Fiscalização financeira, controlo de custos de materiais e prazos de execução em projetos de engenharia e construção." },
+                    { id: 15, cat: 'gestao', nome: "Gestão de Empresas", icone: "bi-sliders", corTexto: "text-primary", imgId: "1522202176-9f61e30d52f4", 
+                      descricao: "Apoio executivo na tomada de decisões com monitorização contínua de indicadores-chave de desempenho (KPIs)." },
+                    { id: 16, cat: 'mkt', nome: "Estudo de Viabilidade Económica", icone: "bi-briefcase", corTexto: "text-info", imgId: "1551836022-d5d88e9218df", 
+                      descricao: "Análise quantitativa profunda para comprovar se um novo investimento ou projeto gerará lucros sustentáveis." },
+                    { id: 17, cat: 'mkt', nome: "Plano de Negócio", icone: "bi-lightbulb-fill", corTexto: "text-info", imgId: "1507537297725-24a1c029d3ca", 
+                      descricao: "Desenho do roteiro estratégico e financeiro completo essencial para captar investidores ou financiamento bancário." },
+                    { id: 18, cat: 'mkt', nome: "Estudo de Mercado", icone: "bi-globe2", corTexto: "text-info", imgId: "1531538601178-e1a1a564e88c", 
+                      descricao: "Mapeamento minucioso da concorrência, do comportamento do consumidor e identificação de nichos de alta procura." },
+                    { id: 19, cat: 'cont', nome: "Plano Financeiro", icone: "bi-cash-stack", corTexto: "text-indigo", imgId: "1565514020-1121162295a3", 
+                      descricao: "Modelagem de necessidades de capital e planeamento de investimentos estruturais de médio e longo prazo." },
+                    { id: 20, cat: 'gestao', nome: "Plano Estratégico", icone: "bi-compass-fill", corTexto: "text-primary", imgId: "1486406146926-c627a92ad1ab", 
+                      descricao: "Definição de metas plurianuais, visão de posicionamento de mercado e planos de ação para a sua liderança corporativa." },
+                    { id: 21, cat: 'legal', nome: "Treinamento de Equipe de Trabalho", icone: "bi-mortarboard-fill", corTexto: "text-danger", imgId: "1515187029135-18ee286d815b", 
+                      descricao: "Capacitação técnica in-company focada em aumentar a produtividade e a adaptação a novos softwares e regras." },
+                    { id: 22, cat: 'legal', nome: "Assessoria Jurídica", icone: "bi-file-earmark-medical-fill", corTexto: "text-warning", imgId: "1589829545856-d10d557cf95f", 
+                      descricao: "Suporte consultivo em direito empresarial, análise técnica de contratos e prevenção de litígios judiciais." },
+                    { id: 23, cat: 'gestao', nome: "Despachante", icone: "bi-send-fill", corTexto: "text-primary", imgId: "1578575437159-5f802f6be135", 
+                      descricao: "Intermediação ágil em alfândegas, portos e ministérios para desalfandegamento e licenciamento de mercadorias." },
+                    { id: 24, cat: 'cont', nome: "Assessoria Financeira", icone: "bi-safe2-fill", corTexto: "text-indigo", imgId: "1567427018-140b7a63a269", 
+                      descricao: "Consultoria dedicada à renegociação de dívidas, otimização de tesouraria e escolha de melhores linhas de crédito." },
+                    { id: 25, cat: 'legal', nome: "Abertura e Legalização de Empresas", icone: "bi-file-check", corTexto: "text-warning", imgId: "1454157471167-7f415f903966", 
+                      descricao: "Trâmite burocrático integral na conservatória, alvarás comerciais e registos fiscais para início imediato da atividade." },
+                    { id: 26, cat: 'gestao', nome: "Softwares de Facturação", icone: "bi-cpu-fill", corTexto: "text-primary", imgId: "1551434678-e21f4161ec4a", 
+                      descricao: "Implementação e parametrização de sistemas ERP homologados para emissão rápida e legal de faturas." },
+                    { id: 27, cat: 'legal', nome: "Formação Profissional (Estágios)", icone: "bi-person-workspace", corTexto: "text-danger", imgId: "1524178232363-1fe2b075b655", 
+                      descricao: "Programas regulamentados de inserção de jovens talentos para rejuvenescimento do quadro de pessoal interno." }
+                ]
+            },
+            computed: {
+                servicosFiltrados: function() {
+                    var self = this;
+                    return self.servicos.filter(function(servico) {
+                        var termo = self.pesquisa.toLowerCase();
+                        var batePesquisa = servico.nome.toLowerCase().includes(termo) || servico.descricao.toLowerCase().includes(termo);
+                        var bateCategoria = self.categoriaSelecionada === 'todos' || servico.cat === self.categoriaSelecionada;
+                        return batePesquisa && bateCategoria;
+                    });
+                }
+            },
+            methods: {
+                encontrarNomeCategoria: function(catId) {
+                    var correspondencia = this.categorias.find(function(item) { return item.id === catId; });
+                    return correspondencia ? correspondencia.nome : '';
+                },
+                abrirAgendamento: function(servico) {
+                    this.formAgendamento.categoria = this.encontrarNomeCategoria(servico.cat);
+                    this.formAgendamento.servicoNome = servico.nome;
+                    
+                    this.formAgendamento.clienteNome = '';
+                    this.formAgendamento.clienteEmail = '';
+                    this.formAgendamento.dataPreferencia = '';
+
+                    this.instanciaModal.show();
+                },
+                submeterFormulario: function() {
+                    alert('Pedido de consultoria enviado com sucesso para: ' + this.formAgendamento.servicoNome);
+                    this.instanciaModal.hide();
+                }
+            },
+            mounted: function() {
+                this.instanciaModal = new bootstrap.Modal(document.getElementById('modalAgendamento'));
+            }
+        });
+    </script>
+</body>
+</html>

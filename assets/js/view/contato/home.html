@@ -1,4 +1,4 @@
-<div class="" style="background-color: #fff;">
+<div class="">
 
     <section class="hero-contacto">
         <div class="container">
@@ -6,94 +6,101 @@
             <p class="lead opacity-75">Inicie a conversa para estabelecer um bom relacionamento e negócios.</p>
         </div>
     </section>
- 
-         <section class="py-5 my-5 contact-section">
+
+    <section class="py-5 my-5 contact-section">
         <div class="container">
 
-        <div class="row">
-            <div class="col-lg-7 mb-5 mb-lg-0 pr-lg-5">
-                <span class="form-subtitle">ENVIE-NOS UMA MENSAGEM</span>
-                <h2 class="form-title">Estamos Prontos para Ajudar.</h2>
-                <p class="text-muted mb-4">Tem alguma questão, pretende solicitar uma proposta ou saber mais sobre os nossos serviços? A nossa equipa está disponível para prestar todo o apoio necessário.</p>
-                
-                <div v-if="submitted" class="alert alert-success">
-                    Obrigado, {{ formData.name }}! Sua mensagem foi enviada com sucesso.
+            <div class="row">
+                <div class="col-lg-7 mb-5 mb-lg-0 pr-lg-5">
+                    <span class="form-subtitle">ENVIE-NOS UMA MENSAGEM</span>
+                    <h2 class="form-title">Estamos Prontos para Ajudar.</h2>
+                    <p class="text-muted mb-4">Tem alguma questão, pretende solicitar uma proposta ou saber mais sobre
+                        os nossos serviços? A nossa equipa está disponível para prestar todo o apoio necessário.</p>
+
+                    <div v-if="submitted" class="alert alert-success">
+                        Obrigado, {{ formData.name }}! Sua mensagem foi enviada com sucesso.
+                    </div>
+
+                    <form @submit.prevent="submitForm" v-else>
+
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Nome Completo</label>
+                                <input type="text" class="form-control" v-model="formData.name"
+                                    placeholder="Ex: Silva Doe" required>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>E-mail</label>
+                                <input type="email" class="form-control" v-model="formData.email"
+                                    placeholder="Ex: name@company.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Assunto</label>
+                            <input type="text" class="form-control" v-model="formData.subject"
+                                placeholder="Como podemos te ajudar?" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Sua mensagem (opcional)</label>
+                            <textarea class="form-control" rows="4" v-model="formData.message"
+                                placeholder="Digite sua mensagem aqui..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-send mt-2">
+                            <i class="far fa-paper-plane mr-2"></i> Enviar mensagem
+                        </button>
+                    </form>
                 </div>
 
-                <form @submit.prevent="submitForm" v-else>
-                
-                    <div class="row">
-                         <div class="col-md-6 form-group">
-                            <label>Nome Completo</label>
-                            <input type="text" class="form-control" v-model="formData.name" placeholder="Ex: Silva Doe" required>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>E-mail</label>
-                            <input type="email" class="form-control" v-model="formData.email" placeholder="Ex: name@company.com" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Assunto</label>
-                        <input type="text" class="form-control" v-model="formData.subject" placeholder="Como podemos te ajudar?" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Sua mensagem (opcional)</label>
-                        <textarea class="form-control" rows="4" v-model="formData.message" placeholder="Digite sua mensagem aqui..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-send mt-2">
-                        <i class="far fa-paper-plane mr-2"></i> Enviar mensagem
-                    </button>
-                </form>
-            </div>
+                <div class="col-lg-5">
+                    <div class="info-card">
+                        <span class="small opacity-75 font-weight-bold tracking-wide d-block mb-2">ENTRE EM
+                            CONTATO</span>
+                        <h3 class="h4 font-weight-bold mb-4">Comunicação perfeita, impacto global.</h3>
 
-            <div class="col-lg-5">
-                <div class="info-card">
-                    <span class="small opacity-75 font-weight-bold tracking-wide d-block mb-2">ENTRE EM CONTATO</span>
-                    <h3 class="h4 font-weight-bold mb-4">Comunicação perfeita, impacto global.</h3>
-                    
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div>
-                            <h6 class="mb-1 font-weight-bold">Sede</h6>
-                            <p class="small mb-0 opacity-75">Luanda - Angola</p>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h6 class="mb-1 font-weight-bold">Sede</h6>
+                                <p class="small mb-0 opacity-75">Luanda - Angola</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
-                        <div>
-                            <h6 class="mb-1 font-weight-bold">Suporte por e-mail</h6>
-                            <p class="small mb-0 opacity-75">support@financewell.tld<br>geral@financewell.tld</p>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h6 class="mb-1 font-weight-bold">Suporte por e-mail</h6>
+                                <p class="small mb-0 opacity-75">support@financewell.tld<br>geral@financewell.tld</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
-                        <div>
-                            <h6 class="mb-1 font-weight-bold">Vamos conversar</h6>
-                            <p class="small mb-0 opacity-75">Tell: +244 947 421 277</p>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div>
+                                <h6 class="mb-1 font-weight-bold">Vamos conversar</h6>
+                                <p class="small mb-0 opacity-75">Tell: +244 947 421 277</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <hr style="border-top: 1px solid rgba(255,255,255,0.15);" class="my-4">
+                        <hr style="border-top: 1px solid rgba(255,255,255,0.15);" class="my-4">
 
-                    <div class="social-links">
-                        <span class="small font-weight-bold mr-3">Siga-nos :</span>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <div class="social-links">
+                            <span class="small font-weight-bold mr-3">Siga-nos :</span>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
- </div>
     </section>
 
     <section class="map-container">
-        <iframe src="https://maps.google.com/maps?q=London%20Eye&t=&z=13&ie=UTF-8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://maps.google.com/maps?q=London%20Eye&t=&z=13&ie=UTF-8&iwloc=&output=embed"
+            allowfullscreen="" loading="lazy"></iframe>
     </section>
 
-   
 
-    </div>
+
+</div>

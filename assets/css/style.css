@@ -10,7 +10,7 @@
      --accent-green: #22f572;
      --light-bg: #f8f9fa;
      --primary-green: #156034;
-     --light-green: #228b4a;
+     --light-green: #11a74a;
      --text-preto: #ffffff;
  }
 
@@ -115,7 +115,7 @@
 
  .btn-outline-gold:hover,
  .btn-outline-gold.active {
-     background-color: var(--accent-gold);
+     background-color: var(--Success-blue);
      color: var(--primary-dark);
  }
 
@@ -128,6 +128,7 @@
  }
 
  .navbar {
+
      background-color: rgba(15, 36, 29, 0.95);
      border-bottom: 1px solid rgba(197, 168, 128, 0.2);
  }
@@ -655,6 +656,20 @@
      color: white;
  }
 
+ .hero-formacao {
+     background: linear-gradient(rgba(9, 38, 21, 0.85), rgba(9, 38, 21, 0.85)), url('../img/formacoes.jpg') no-repeat center center;
+     background-size: cover;
+     padding: 80px 0;
+     color: white;
+ }
+
+ .hero-consultoria {
+     background: linear-gradient(rgba(9, 38, 21, 0.85), rgba(9, 38, 21, 0.85)), url('../img/consultoria.jpg') no-repeat center center;
+     background-size: cover;
+     padding: 80px 0;
+     color: white;
+ }
+
  .hero-section h1 {
      font-size: 3.5rem;
      font-weight: bold;
@@ -666,7 +681,7 @@
  }
 
  .form-subtitle {
-     color: var(--light-green);
+     color: var(--accent-green);
      font-weight: bold;
      font-size: 0.85rem;
      letter-spacing: 1px;
@@ -676,6 +691,8 @@
      font-size: 2rem;
      font-weight: bold;
      margin-bottom: 20px;
+     color: var(--dark);
+     ;
  }
 
  /* --- MELHORIAS NOS INPUTS (CUSTOMIZAÇÃO) --- */
@@ -741,7 +758,7 @@
 
  /* Card Verde de Contato */
  .info-card {
-     background-color: var(--primary-green);
+     background-color: var(--light-green);
      color: white;
      border-radius: 15px;
      padding: 40px 30px;
@@ -785,7 +802,7 @@
 
  /* Footer */
  .footer-section {
-     background-color: var(--primary-dark);
+     background-color: rgba(15, 36, 29, 0.95);
      color: #a0aab2;
      padding: 60px 0 20px 0;
      font-size: 0.9rem;
@@ -870,3 +887,315 @@
      color: white;
      padding: 50px 0;
  }
+
+
+
+
+ /* -------------------------------- AREA DE SERVICOS ----------------------------------------*/
+
+ .font-serif {
+     font-family: 'Playfair Display', serif;
+ }
+
+ /* Hero Futurista */
+ .premium-hero {
+     background: radial-gradient(circle at top right, #0f172a, #020617);
+     position: relative;
+     overflow: hidden;
+     border-bottom: 1px solid var(--Success-blue);
+ }
+
+ /* Orbes de Luz de Fundo Animadas */
+ @keyframes floatGlow {
+
+     0%,
+     100% {
+         transform: scale(1) translate(0px, 0px);
+         opacity: 0.4;
+     }
+
+     50% {
+         transform: scale(1.2) translate(40px, -60px);
+         opacity: 0.6;
+     }
+ }
+
+ .blur-glow {
+     position: absolute;
+     border-radius: 50%;
+     filter: blur(120px);
+     z-index: 1;
+     animation: floatGlow 10s infinite alternate ease-in-out;
+ }
+
+ .bg-blob-1 {
+     top: -10%;
+     right: -5%;
+     width: 500px;
+     height: 500px;
+     background: linear-gradient(45deg, #3b82f6, #6366f1);
+ }
+
+ .bg-blob-2 {
+     bottom: -20%;
+     left: -10%;
+     width: 450px;
+     height: 450px;
+     background: linear-gradient(45deg, #06b6d4, #10b981);
+     animation-delay: -3s;
+ }
+
+ /* Input de Busca Fluido */
+ .search-wrapper {
+     max-width: 650px;
+     margin: 0 auto;
+     position: relative;
+     z-index: 5;
+ }
+
+ .search-box {
+     background: var(--Success-blue) !important;
+     backdrop-filter: blur(20px);
+     border: 1px solid rgba(255, 255, 255, 0.1) !important;
+     color: #ffffff !important;
+     padding: 1.1rem 1.5rem 1.1rem 3.5rem !important;
+     border-radius: 1.5rem !important;
+     font-weight: 300;
+     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+     transition: all 0.4s ease;
+ }
+
+ .search-box:focus {
+     border-color: #3b82f6 !important;
+     background: rgba(15, 23, 42, 0.95) !important;
+     box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2) !important;
+ }
+
+ .search-icon {
+     position: absolute;
+     left: 1.5rem;
+     top: 50%;
+     transform: translateY(-50%);
+     color: #94a3b8;
+     font-size: 1.25rem;
+ }
+
+ /* Botões de Filtro Modernos */
+ .filter-container {
+     background: rgba(255, 255, 255, 0.85);
+     backdrop-filter: blur(20px);
+     border: 1px solid rgba(226, 232, 240, 0.8);
+     padding: 0.6rem;
+     border-radius: 2rem;
+     box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.08);
+     margin-top: -2.5rem;
+     position: relative;
+     z-index: 10;
+     display: inline-flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     gap: 0.4rem;
+ }
+
+ .btn-filter {
+     border: none;
+     background: transparent;
+     color: #64748b;
+     padding: 0.8rem 1.8rem;
+     font-size: 0.8rem;
+     font-weight: 700;
+     letter-spacing: 0.05em;
+     text-transform: uppercase;
+     border-radius: 1.5rem;
+     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+ }
+
+ .btn-filter:hover:not(.active) {
+     background-color: #f1f5f9;
+     color: #0f172a;
+     transform: translateY(-2px);
+ }
+
+ .btn-filter.active {
+     background: linear-gradient(135deg, var(--Success-blue));
+     color: #ffffff;
+     transform: translateY(-2px);
+     box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2);
+ }
+
+ /* Cyber Cards Premium */
+ .cyber-card {
+     background: #ffffff;
+     border: 1px solid #e2e8f0;
+     border-radius: 2.25rem;
+     overflow: hidden;
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+         box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+         border-color 0.3s ease;
+ }
+
+ .cyber-card:hover {
+     transform: translateY(-12px);
+     box-shadow: 0 40px 70px -15px rgba(15, 23, 42, 0.08), 0 0 30px rgba(59, 130, 246, 0.03);
+     border-color: #cbd5e1;
+ }
+
+ /* Zoom das Capas */
+ .img-mask {
+     position: relative;
+     height: 220px;
+     overflow: hidden;
+ }
+
+ .img-mask img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+ }
+
+ .cyber-card:hover .img-mask img {
+     transform: scale(1.1);
+ }
+
+ .card-overlay {
+     position: absolute;
+     inset: 0;
+     background: linear-gradient(to top, rgba(15, 23, 42, 0.7) 0%, transparent 100%);
+ }
+
+ /* Ícone com Efeito Mola */
+ .icon-container {
+     position: absolute;
+     bottom: -1.75rem;
+     left: 2rem;
+     width: 3.8rem;
+     height: 3.8rem;
+     border-radius: 1.25rem;
+     background: #ffffff;
+     border: 1px solid #f1f5f9;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: 1.6rem;
+     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+     z-index: 5;
+     transition: transform 0.5s cubic-bezier(0.34, 1.6, 0.4, 1);
+ }
+
+ .cyber-card:hover .icon-container {
+     transform: translateY(-65px) scale(1.1) rotate(5deg);
+ }
+
+ /* ========================================================
+           DESIGN ULTRA ATRAENTE DO FORMULÁRIO (MODAL LUXO)
+           ======================================================== */
+ .premium-modal .modal-content {
+     background: rgba(15, 23, 42, 0.95);
+     backdrop-filter: blur(25px);
+     -webkit-backdrop-filter: blur(25px);
+     border: 1px solid rgba(255, 255, 255, 0.08);
+     border-radius: 2.5rem;
+     color: #f8fafc;
+     box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.7);
+ }
+
+ .premium-modal .modal-header {
+     padding: 2.5rem 2.5rem 1rem 2.5rem;
+ }
+
+ .premium-modal .modal-body {
+     padding: 1rem 2.5rem 2.5rem 2.5rem;
+ }
+
+ /* Rótulos das caixas de texto */
+ .premium-modal .form-label {
+     font-size: 0.75rem;
+     font-weight: 700;
+     letter-spacing: 0.08em;
+     color: #94a3b8;
+     margin-bottom: 0.5rem;
+ }
+
+ /* Inputs Editáveis Premium */
+ .premium-modal .form-control {
+     background: rgba(30, 41, 59, 0.5);
+     border: 1px solid rgba(255, 255, 255, 0.08);
+     border-radius: 1rem;
+     color: #ffffff;
+     padding: 0.85rem 1.25rem;
+     font-size: 0.95rem;
+     transition: all 0.3s ease;
+ }
+
+ .premium-modal .form-control:focus {
+     background: rgba(30, 41, 59, 0.8);
+     border-color: #3b82f6;
+     box-shadow: 0 0 18px rgba(59, 130, 246, 0.4);
+     color: #ffffff;
+ }
+
+ /* Inputs Bloqueados de Informação Inteligente */
+ .form-control-lock {
+     background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05)) !important;
+     border: 1px solid rgba(59, 130, 246, 0.2) !important;
+     color: #38bdf8 !important;
+     font-weight: 600;
+     border-radius: 1rem;
+     padding: 0.85rem 1.25rem;
+     cursor: not-allowed;
+ }
+
+ /* Botão Magnético de Envio */
+ .btn-gradient-submit {
+     background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+     border: none;
+     color: white;
+     padding: 1rem;
+     border-radius: 1.25rem;
+     font-weight: 700;
+     letter-spacing: 0.05em;
+     box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
+     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+ }
+
+ .btn-gradient-submit:hover {
+     transform: translateY(-3px);
+     box-shadow: 0 20px 40px rgba(139, 92, 246, 0.5);
+     opacity: 0.95;
+ }
+
+ /* ANIMAÇÕES VUE (TRANSITION-GROUP FLUIDO) */
+ .list-enter {
+     opacity: 0;
+     transform: translateY(30px) scale(0.95);
+ }
+
+ .list-leave-to {
+     opacity: 0;
+     transform: translateY(-30px) scale(0.9);
+ }
+
+ .list-enter-active {
+     transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+ }
+
+ .list-leave-active {
+     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+     position: absolute;
+     width: calc(100% - 1.5rem);
+ }
+
+ .list-move {
+     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+ }
+
+
+
+
+
+ /* -------------------------------- FIM DA AREA DE SERVICOS ----------------------------------------*/

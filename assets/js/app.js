@@ -19,6 +19,11 @@ Vue.component('p-home', page_home)
 import page_servicos from './view/servicos/home.js'
 Vue.component('p-servicos', page_servicos)
 
+
+import page_formacao from './view/servicos/formacao.js'
+Vue.component('p-formacao', page_formacao)
+
+
 import page_sobre from './view/sobre/home.js'
 Vue.component('p-sobre', page_sobre)
 
@@ -37,7 +42,8 @@ Vue.use(Router)
 
 const routes = [
     { path: '/', name: "editar_testemunho", component: { template: '<p-home></p-home>' } },
-    { path: '/formacao', component: { template: '<p-servicos></p-servicos>' } },
+    { path: '/consultoria', component: { template: '<p-servicos></p-servicos>' } },
+       { path: '/formacao', component: { template: '<p-formacao></p-formacao>' } },
     { path: '/sobre', component: { template: '<p-sobre></p-sobre>' } },
     { path: '/blog', component: { template: '<p-noticia></p-noticia>' } },
     { path: '/galeria', component: { template: '<p-galeria></p-galeria>' } },
