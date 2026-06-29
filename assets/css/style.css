@@ -13,7 +13,7 @@
      --light-green: #11a74a;
      --text-preto: #ffffff;
  }
-
+.swiper-container-wrapper
  body {
      font-family: 'Poppins', sans-serif;
      background-color: var(--primary-dark);
@@ -933,7 +933,7 @@
      right: -5%;
      width: 500px;
      height: 500px;
-     background: linear-gradient(45deg, #3b82f6, #6366f1);
+     background: linear-gradient(45deg, #3b82f6, #0089e4);
  }
 
  .bg-blob-2 {
@@ -1194,8 +1194,391 @@
      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
  }
 
-
-
-
-
  /* -------------------------------- FIM DA AREA DE SERVICOS ----------------------------------------*/
+
+ /* -------------------------------- SLIDER DA AREA DE SERVICOS ----------------------------------------*/
+ 
+        .services-section {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            font-weight: 800;
+            font-size: 3.2rem;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+         
+            
+        }
+
+        .swiper-container-wrapper {
+            position: relative;
+            padding: 30px 20px;
+        }
+
+        /* --- CARD COM IMAGEM PREMIUM --- */
+        .service-card {
+            position: relative;
+            height: 420px;
+            border-radius: 20px;
+            overflow: hidden; /* Mantém o zoom da imagem dentro do card */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 35px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Imagem de Fundo */
+        .card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s ease;
+            z-index: 1;
+        }
+
+        /* Overlay Gradiente (Escurece a imagem para o texto ficar legível) */
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 43, 151, 0.95) 20%, rgba(11, 51, 153, 0.6) 60%, rgba(0,0,0,0) 100%);
+            z-index: 2;
+            transition: background 0.4s ease;
+        }
+
+        /* Conteúdo do Card */
+        .card-content {
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Ícone Superior Flutuante */
+        .icon-badge {
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #0089e4; /* Cor moderna em tom de roxo/azul */
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .card-content h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .card-content p {
+            color: #cbd5e1;
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .btn-action {
+            color: #0089e4;
+            font-weight: 600;
+            text-decoration: none !important;
+            display: inline-flex;
+            align-items: center;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-action i {
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+
+        /* --- EFEITOS HOVER --- */
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(17, 100, 224, 0.699);
+        }
+
+        .service-card:hover .card-bg {
+            transform: scale(1.1); /* Efeito de Zoom na imagem */
+        }
+
+        .service-card:hover .card-overlay {
+            background: linear-gradient(to top, rgba(17, 100, 224, 0.85) 10%, rgba(11, 15, 25, 0.7) 70%);
+        }
+
+        .service-card:hover .icon-badge {
+            background: #ffffff;
+            color: #0089e4;
+            transform: scale(1.05);
+        }
+
+        .service-card:hover .card-content h3, 
+        .service-card:hover .card-content p,
+        .service-card:hover .btn-action {
+            color: #ffffff;
+        }
+
+        .service-card:hover .btn-action i {
+            transform: translateX(6px);
+        }
+
+        /* Setas do Swiper Customizadas */
+        .swiper-button-next, .swiper-button-prev {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background: #0089e4;
+            border-color: #0089e4;
+        }
+
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 16px;
+        }
+
+        /* Pontos de Paginação */
+        .swiper-pagination-bullet {
+            background: #03ff2da1;
+        }
+        .swiper-pagination-bullet-active {
+            background: #0089e4;
+            width: 25px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+    
+
+ /* -------------------------------- FIM DO SLIDER DA AREA DE SERVICOS ----------------------------------------*/
+
+
+ 
+ /* --------------------------------  NOSSA EQUIPE ----------------------------------------*/
+
+ 
+
+        .team-section {
+            padding: 60px 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            padding: 20px 0 50px 0;
+            position: relative;
+        }
+
+        /* Customização dos Cards baseada na imagem */
+        .team-card {
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 100%;
+            /* Mantém a proporção quadrada 1:1 */
+            background-color: #eaeaea;
+        }
+
+        .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        /* Faixa de Rede Social */
+        .social-bar {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .social-icon {
+            background: #000;
+            color: #fff;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .social-user {
+            padding-left: 15px;
+            font-size: 0.85rem;
+            color: #777;
+            transition: color 0.3s ease;
+        }
+
+        /* Detalhes do Membro */
+        .member-info {
+            padding: 20px;
+            position: relative;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .member-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .member-role {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .arrow-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: #0d6efd;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        /* ==========================================================
+       EFEITO DINÂMICO: Aplica o estilo azul no SEGUNDO slide (.swiper-slide-next)
+       ========================================================== */
+        .swiper-slide-next .team-card .image-container img {
+            filter: grayscale(0%);
+        }
+
+        .swiper-slide-next .team-card .social-bar {
+            background: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .swiper-slide-next .team-card .social-user {
+            color: #fff;
+        }
+
+        .swiper-slide-next .team-card .member-info {
+            background: #0d6efd;
+            color: #fff;
+        }
+
+        .swiper-slide-next .team-card .member-role {
+            color: #e0e0e0;
+        }
+
+        .swiper-slide-next .team-card .arrow-btn {
+            color: #fff;
+            transform: translateX(5px);
+        }
+
+        /* Mantém o efeito de Hover individual para os outros cards */
+        .team-card:hover .image-container img {
+            filter: grayscale(0%);
+        }
+
+        .team-card:hover .social-bar {
+            background: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .team-card:hover .social-user {
+            color: #fff;
+        }
+
+        .team-card:hover .member-info {
+            background: #0d6efd;
+            color: #fff;
+        }
+
+        .team-card:hover .member-role {
+            color: #e0e0e0;
+        }
+
+        .team-card:hover .arrow-btn {
+            color: #fff;
+            transform: translateX(5px);
+        }
+
+
+        /* --- ESTILOS: Botões de Navegação Animados --- */
+        .nav-container {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .btn-swiper {
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border: 2px solid #0d6efd;
+            color: #0d6efd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-swiper i {
+            transition: transform 0.3s ease;
+        }
+
+        /* Efeito de Hover nos botões */
+        .btn-swiper:hover {
+            background-color: #0d6efd;
+            color: #fff;
+            transform: scale(1.08);
+            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+        }
+
+        /* Animação das setas internas */
+        .btn-swiper-prev:hover i {
+            transform: translateX(-4px);
+        }
+
+        .btn-swiper-next:hover i {
+            transform: translateX(4px);
+        }
+
+ /* -------------------------------- FIM SLIDER NOSSA EQUIPE ----------------------------------------*/
+ 
