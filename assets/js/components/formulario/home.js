@@ -4,39 +4,80 @@ import {
 } from "../bus.js"; // ajuste caminho
 
 export default {
-    data: function() {
+    data: function () {
         return {
-            form: {
-                nome: '',
+               nome: '',
                 email: '',
                 telefone: '',
                 provincia: '',
                 categoria: '',
                 curso: '',
                 pacote: '',
-                mensagem: ''
-            }
+                mensagem: '',
+
+            categoriaSelecionada: '',
+            cursoSelecionado: '',
+            // Estrutura de dados baseada na tua tabela
+            dados: {
+                "CONTABILIDADE": [
+                    "Contabilidade Aplicada", "Fecho de Contas", "Abertura de Contas",
+                    "Regularizações de Contas", "Reconciliações de Contas", "Apuramento do IVA"
+                ],
+                "FISCALIDADE": [
+                    "Fiscalidade Angolana (AGT e INSS)", "Portal do contribuinte Iniciante",
+                    "Portal do Contribuinte Intermédio", "Imposto de Selo", "Imposto Sobre o Valor Acrescentado"
+                ],
+                "RECURSOS HUMANOS": [
+                    "Recursos Humanos Aplicada", "Processamento Salarial", "Higiene e Segurança no Trabalho"
+                ],
+                "CONSULTORIA": [
+                    "Consultoria Empresarial", "Constituição e Legalização de Empresas", "Plano de Negocio"
+                ],
+                "INFORMÁTICA": [
+                    "Excel", "Word", "Power Point", "Optica do Utilizador"
+                ]
+            },
+
+            niveis: [
+                'Iniciante',
+                'Intermediário',
+                'Avançado',
+                'Especialista'
+            ],
+ 
+ 
+             
+       
         };
     },
-
+    computed: {
+        // Esta função roda sozinha sempre que 'categoriaSelecionada' mudar
+        cursosFiltrados() {
+            if (!this.categoriaSelecionada) {
+                return [];
+            }
+            // Retorna apenas o array de cursos da categoria que o usuário escolheu
+            return this.dados[this.categoriaSelecionada];
+        }
+    },
     methods: {
         enviarWhatsApp() {
-
-            if (!this.form.nome || !this.form.telefone) {
+ alert("1111");
+            if (!this.nome || !this.telefone) {
                 alert("Preencha Nome e Telefone!");
                 return;
             }
 
-            const texto = `*Nova Inscrição no ACADEMIA HCENGINEERS*
+            const texto = `*Nova Inscrição no ACADEMIA Finance Well*
 
-*Nome:* ${this.form.nome}
-*Email:* ${this.form.email}
-*Telefone:* ${this.form.telefone}
-*Província:* ${this.form.provincia}
-*Categoria:* ${this.form.categoria}
-*Curso:* ${this.form.curso}
-*Pacote:* ${this.form.pacote}
-*Mensagem:* ${this.form.mensagem}
+*Nome:* ${this.nome}
+*Email:* ${this.email}
+*Telefone:* ${this.telefone}
+*Província:* ${this.provincia}
+*Categoria:* ${this.categoriaSelecionada}
+*Curso:* ${this.cursoSelecionado}
+*Pacote:* ${this.pacote}
+*Mensagem:* ${this.mensagem}
 
 Por favor, entre em contacto para confirmar minha inscrição. Obrigado!`;
 

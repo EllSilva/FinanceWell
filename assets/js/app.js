@@ -43,7 +43,7 @@ Vue.use(Router)
 const routes = [
     { path: '/', name: "editar_testemunho", component: { template: '<p-home></p-home>' } },
     { path: '/consultoria', component: { template: '<p-servicos></p-servicos>' } },
-       { path: '/formacao', component: { template: '<p-formacao></p-formacao>' } },
+    { path: '/formacao', component: { template: '<p-formacao></p-formacao>' } },
     { path: '/sobre', component: { template: '<p-sobre></p-sobre>' } },
     { path: '/blog', component: { template: '<p-noticia></p-noticia>' } },
     { path: '/galeria', component: { template: '<p-galeria></p-galeria>' } },
@@ -64,5 +64,5 @@ new Vue({
 
 }).$mount('#app')
 
-;
-(async() => {})()
+    ;
+(async () => { })()
