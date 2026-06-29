@@ -11,41 +11,104 @@ export default {
                 { icone: 'fa-solid fa-lightbulb', texto: 'Inovação e Engenharia de Negócios' }
             ],
                  equipe: [
-                    {
-                        nome: 'Joss Anderson',
-                        cargo: 'Art Director',
-                        foto: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=500',
-                        socialIcon: 'fa-brands fa-facebook-f',
-                        socialUser: 'Facebook/user'
-                    },
-                    {
-                        nome: 'Joss Anderson',
-                        cargo: 'Ux Designer',
-                        foto: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=500',
-                        socialIcon: 'fa-brands fa-twitter',
-                        socialUser: 'Twitter/user'
-                    },
-                    {
-                        nome: 'Joss Anderson',
-                        cargo: 'Web Designer',
-                        foto: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=500',
-                        socialIcon: 'fa-brands fa-linkedin-in',
-                        socialUser: 'LinkedIn/user'
-                    },
-                    {
-                        nome: 'Joss Anderson',
-                        cargo: 'SEO Expert',
-                        foto: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=500',
-                        socialIcon: 'fa-brands fa-instagram',
-                        socialUser: 'Instagram/user'
-                    },
-                    {
-                        nome: 'Joss Anderson',
-                        cargo: 'Developer',
-                        foto: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=500',
-                        socialIcon: 'fa-brands fa-github',
-                        socialUser: 'Github/user'
-                    }
+                   {
+            nome: 'Yuri João',
+            cargo: 'CEO / Director Geral',
+            foto: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=500',
+            socialIcon: 'fa-brands fa-linkedin-in',
+            socialUser: 'linkedin/yuri-joao'
+          },
+          {
+            nome: 'Celma Semedo',
+            cargo: 'Coord. Operacional/Financeira',
+            foto: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=500',
+            socialIcon: 'fa-brands fa-linkedin-in',
+            socialUser: 'linkedin/celma-semedo'
+          },
+          {
+            nome: 'Yanelis Padron Cruz',
+            cargo: 'Chefe Dept. Comercial/Adm.',
+            foto: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=500',
+            socialIcon: 'fa-brands fa-linkedin-in',
+            socialUser: 'linkedin/yanelis-cruz'
+          },
+          {
+            nome: 'Israel João',
+            cargo: 'Consultor Empresarial',
+            foto: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=500',
+            socialIcon: 'fa-brands fa-linkedin-in',
+            socialUser: 'linkedin/israel-joao'
+          },
+          {
+            nome: 'Kamananga João',
+            cargo: 'Chefe Dept. Contab./Fiscalidade',
+            foto: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=500',
+            socialIcon: 'fa-brands fa-linkedin-in',
+            socialUser: 'linkedin/kamananga-joao'
+          },
+          {
+            nome: 'Catarina Calueto',
+            cargo: 'Coord. Contabilidade/Fiscalidade',
+            foto: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=500',
+            socialIcon: 'fa-brands fa-linkedin-in',
+            socialUser: 'linkedin/catarina-calueto'
+          },
+          {
+            nome: 'Teresa Manuel',
+            cargo: 'Técnica de Recursos Humanos',
+            foto: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=500',
+            socialIcon: 'fa-brands fa-linkedin-in',
+            socialUser: 'linkedin/teresa-manuel'
+          },
+          {
+            nome: 'Ditutala Ndombaxi',
+            cargo: 'Técnico de Tecnologia e Info.',
+            foto: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=500',
+            socialIcon: 'fa-brands fa-linkedin-in',
+            socialUser: 'linkedin/ditutala-ndombaxi'
+          },
+          {
+            nome: 'Milton Abílio',
+            cargo: 'Designer Gráfico',
+            foto: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=500',
+            socialIcon: 'fa-brands fa-instagram',
+            socialUser: 'instagram/milton-abilio'
+          },
+          {
+            nome: 'Bibiana António',
+            cargo: 'Serviços Gerais',
+            foto: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=500',
+            socialIcon: 'fa-brands fa-linkedin-in',
+            socialUser: 'linkedin/bibiana-antonio'
+          },
+          {
+            nome: 'Celma Neto',
+            cargo: 'Assistente Comercial/Adm.',
+            foto: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&q=80&w=500',
+            socialIcon: 'fa-brands fa-linkedin-in',
+            socialUser: 'linkedin/celma-neto'
+          },
+          {
+            nome: 'Makiesse Ndamba',
+            cargo: 'Assistente Comercial/Adm.',
+            foto: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=500',
+            socialIcon: 'fa-brands fa-linkedin-in',
+            socialUser: 'linkedin/makiesse-ndamba'
+          },
+          {
+            nome: 'João Futila',
+            cargo: 'Assistente Contab./Fiscalidade',
+            foto: 'https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&q=80&w=500',
+            socialIcon: 'fa-brands fa-linkedin-in',
+            socialUser: 'linkedin/joao-futila'
+          },
+          {
+            nome: 'António Ndamba',
+            cargo: 'Assistente de Tecnologia e Info.',
+            foto: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=500',
+            socialIcon: 'fa-brands fa-linkedin-in',
+            socialUser: 'linkedin/antonio-ndamba'
+          }
                 ],
 
             servicos: [
